@@ -79,10 +79,7 @@
     }
 
     h1 {
-      position: relative;
-      z-index: 1; /* Garante que o título fique acima do canvas */
-      text-align: center;
-      font-family: Arial, sans-serif;
+      display: none;
     }
 #hack-feedback {
     font-size: 14px;
