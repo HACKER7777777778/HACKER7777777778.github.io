@@ -177,6 +177,22 @@
     border-radius: 23px;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0);
 }
+#animated-image {
+    animation: pulse 1.5s infinite;
+    filter: brightness(50%); /* Deixa a imagem 50% mais escura */
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.1);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
         .login-intro-img {
             max-width: 100%;
             height: auto;
@@ -365,12 +381,25 @@
     }
 
   
-        #draggable-image img {
+    #draggable-image img {
     width: 137px;
     top: 24px;
     left: 36px;
     height: auto;
     position: fixed;
+    animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.1); /* Aumenta o tamanho da imagem */
+    }
+    100% {
+        transform: scale(1);
+    }
 }
         .black-background {
             display: none;
@@ -592,7 +621,7 @@ a.anchorjs-link {
                     </div>
                     <div class="row">
                         <div class="col">
-                            <button class="btn btn-primary1 w-100" type="button" onclick="login('https://blaze.bet.br/pt/games/mines')" style="height: 60px;">
+                            <button class="btn btn-primary1 w-100" type="button" onclick="login('https://blaze.bet.br/pt/games/double')" style="height: 60px;">
                                 <img src="https://blaze1.space/static/media/logo.cf45d2ad.svg" alt="Logo" class="icon-small">
                                 
                             </button>
@@ -622,7 +651,7 @@ a.anchorjs-link {
         <source src="https://hackerdominesalife00.netlify.app/media/3585079191-preview.mp4_1728018529513-_uhUTxz9.mp4" type="video/mp4">
         Seu navegador não suporta a reprodução de vídeos.
     </video>
-    <span class="bot-title"><i class="fas fa-user-secret"></i> Hacker Marquez [2.0]</span>
+    <span class="bot-title"><i class="fas fa-user-secret"></i> Hacker Do Marquez </span>
     
     <div id="result"></div>
     
