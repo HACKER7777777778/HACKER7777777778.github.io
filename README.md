@@ -62,6 +62,29 @@
     font-family: 'M PLUS 1 Code', monospace;
     margin-top: 10px;
 }
+ /* Garantindo que o fundo da página e do canvas sejam pretos */
+ body, html {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      background-color: black;
+      color: white;
+    }
+
+    /* Ajustando o canvas para ocupar toda a tela */
+    #matrix {
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: -1; /* Garante que o canvas fique atrás do conteúdo */
+    }
+
+    h1 {
+      position: relative;
+      z-index: 1; /* Garante que o título fique acima do canvas */
+      text-align: center;
+      font-family: Arial, sans-serif;
+    }
 #hack-feedback {
     font-size: 14px;
     text-align: center;
