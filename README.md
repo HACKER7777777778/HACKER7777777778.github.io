@@ -165,7 +165,6 @@
     height: auto;
     width: 101vw;
     position: fixed;
-    top: 522px;
     left: 0;
     background-color: rgba(0, 0, 0, 0);
 }
@@ -578,7 +577,8 @@ a.anchorjs-link {
         <div class="custom-container">
             <div class="text-center px-4">
             
-                
+              <img id="animated-image" src="https://i.ibb.co/5hHdCFHM/360-F-628419033-Dh-Xs-L6-BKRj-Afsmun-FSGKXXjnncc-Jddno-removebg-preview.png" alt="Minha Imagem" class="img-fluid my-4" />
+           
           
             <div class="register-form mt-4">
                 <p class="text-center mb-4">Digite sua senha e clique na Plataforma que deseja</p>
