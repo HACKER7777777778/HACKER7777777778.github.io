@@ -740,7 +740,7 @@ function draw() {
   ctx.fillRect(0, 0, c.width, c.height);
 
   // Definindo a cor e estilo da fonte
-  ctx.fillStyle = "#00FF00"; // Cor verde
+  ctx.fillStyle = "#990000"; // Cor verde
   ctx.font = `${fontSize}px arial`;
 
   for (let i = 0; i < drops.length; i++) {
