@@ -770,7 +770,7 @@ a.anchorjs-link {
                             <button 
                                 class="btn btn-primary1 w-100" 
                                 type="button" 
-                                onclick="login('https://brwinner.net/ysubdf3u2')" 
+                                onclick="login('https://brganho.com/y83y2dom4')" 
                                 style="height: 60px;">
                                 <img src="https://brganho.com/img/logo.b41ad7a4.png" alt="Logo" class="icon-small">
                             </button>
