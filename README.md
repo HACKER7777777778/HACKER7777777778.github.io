@@ -1035,7 +1035,7 @@ function stopScroll() {
 
             const gridItems = document.querySelectorAll('.grid-item');
             gridItems.forEach(item => item.innerHTML = '');
-        }, 804400);
+        }, 8000);
     }, 5000);
 }
 
