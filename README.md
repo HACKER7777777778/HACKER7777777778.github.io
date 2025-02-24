@@ -718,8 +718,8 @@ a.anchorjs-link {
     width: 500px;
     height: 615px;
     position: absolute;
-    top: 178px;
-    left: 190px;
+    top: 180px;
+    left: 193px;
     z-index: 10000;
     overflow: hidden;
     pointer-events: none;
@@ -1035,7 +1035,7 @@ function stopScroll() {
 
             const gridItems = document.querySelectorAll('.grid-item');
             gridItems.forEach(item => item.innerHTML = '');
-        }, 8000);
+        }, 804400);
     }, 5000);
 }
 
