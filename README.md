@@ -137,7 +137,6 @@ img, svg {
     LEFT: 0PX;
     POSITION: RELATIVE;
 }
-
 .context-options .bot-title {
     font-size: 19px;
     text-align: center;
@@ -178,19 +177,17 @@ img, svg {
         height: 100%; 
     }
     .login-wrapper {
-    display: flex;
+    display: flex
+;
     align-items: center;
     justify-content: center;
     height: auto;
     width: 101vw;
     position: fixed;
-    top: 0%;
+    top: 60%;
     left: 0;
     background-color: rgba(0, 0, 0, 0);
 }
-
-
-
     .custom-container {
     text-align: center;
     max-width: 388px;
@@ -441,13 +438,6 @@ img, svg {
         }
         
       
-   /* Ajustando o canvas para ocupar toda a tela */
-   #matrix {
-      position: absolute;
-      top: 0;
-      left: 0;
-      z-index: -1; /* Garante que o canvas fique atrás do conteúdo */
-    }
 
 .loading-hidden {
     display: none; 
@@ -546,7 +536,7 @@ a.anchorjs-link {
     left: -9%;
     width: 122%;
     height: 5px;
-    background-color: rgb(128, 0, 0);
+    background-color: green;
     animation: moveUpDown 2s ease-in-out infinite;
 }
 
@@ -563,20 +553,7 @@ a.anchorjs-link {
     }
 }
  
-#animated-image {
-    animation: pulse 1.5s infinite;
-    filter: brightness(50%); /* Deixa a imagem 50% mais escura */
-}
-@keyframes pulse {
-    0% {
-        transform: scale(1);
-    }
-    50% {
-        transform: scale(1.1);
-    }
-    100% {
-        transform: scale(1);
-    } }
+
 #modoAutomatico {
     display: inline-flex;
     align-items: center;
@@ -714,46 +691,24 @@ a.anchorjs-link {
     cursor: pointer;
     pointer-events: auto; /* Permite cliques no botão */
 }
-.white-square {
-    width: 500px;
-    height: 615px;
-    position: absolute;
-    top: 180px;
-    left: 193px;
-    z-index: 10000;
-    overflow: hidden;
-    pointer-events: none;
-}
-
-.grid-container {
-    display: grid
-;
-    grid-template-columns: repeat(5, 57px);
-    grid-template-rows: repeat(5, 56px);
-    gap: 35px;
-    height: 100%;
-    width: 100%;
-}
-.grid-item {
-    background-color: #ffffff00;
-    border: 0px solid #00000000;
-}
-
-
 
     </style>
 </head>
 
 <body>
-  <canvas id="matrix"></canvas>
+    <div class="video-background">
+        <video autoplay loop muted>
+          <source src="https://doublejonwhite.com/Video2.mp4" type="video/mp4">
+          Seu navegador não suporta vídeos em HTML5.
+        </video>
+      </div>
       
 
     <div class="login-wrapper d-flex align-items-center justify-content-center" id="login-wrapper">
         <div class="custom-container">
             <div class="text-center px-4">
             
-              <img id="animated-image" src="https://i.ibb.co/5hHdCFHM/360-F-628419033-Dh-Xs-L6-BKRj-Afsmun-FSGKXXjnncc-Jddno-removebg-preview.png" alt="Minha Imagem" class="img-fluid my-4" />
-           
+                
           
             <div class="register-form mt-4">
                 <p class="text-center mb-4">Digite sua senha e clique na Plataforma que deseja</p>
@@ -779,9 +734,9 @@ a.anchorjs-link {
                             <button 
                                 class="btn btn-primary2 w-100" 
                                 type="button" 
-                                onclick="login('https://ricobetbr.net/yjeeeviwq')" 
+                                onclick="login('https://jogar.win/y829fn1qx')" 
                                 style="height: 60px;">
-                                <img src="https://ricobetbr.net/img/logo.798396dd.png" alt="Logo" class="large-icon">
+                                <img src="https://jogar.win/img/logo.e6258434.png" alt="Logo" class="large-icon">
                             </button>
                         </div>
                     </div>
@@ -795,135 +750,46 @@ a.anchorjs-link {
                 </div>
                 
                     
-                    
-                <div id="iframe-container">
-                    <iframe id="login-iframe" src=""></iframe>
-                    <div id="loading-overlay" class="loading-overlay"></div>
-                    
-                    <div id="draggable-image" class="draggable" onclick="toggleContextOptions()">
-                    <img src="https://i.ibb.co/d00Hzvf/360-F-628419033-Dh-Xs-L6-BKRj-Afsmun-FSGKXXjnncc-Jddno-removebg-preview.png" alt="Hacker"></div>
-                    
-                    <div class="white-square">
-                        <div class="grid-container">
-                          
-                            <div class="grid-item"></div>
-                            <div class="grid-item"></div>
-                            <div class="grid-item"></div>
-                            <div class="grid-item"></div>
-                            <div class="grid-item"></div>
-                            <div class="grid-item"></div>
-                            <div class="grid-item"></div>
-                            <div class="grid-item"></div>
-                            <div class="grid-item"></div>
-                            <div class="grid-item"></div>
-                            <div class="grid-item"></div>
-                            <div class="grid-item"></div>
-                            <div class="grid-item"></div>
-                            <div class="grid-item"></div>
-                            <div class="grid-item"></div>
-                            <div class="grid-item"></div>
-                            <div class="grid-item"></div>
-                            <div class="grid-item"></div>
-                            <div class="grid-item"></div>
-                            <div class="grid-item"></div>
-                            <div class="grid-item"></div>
-                            <div class="grid-item"></div>
-                            <div class="grid-item"></div>
-                            <div class="grid-item"></div>
-                            <div class="grid-item"></div>
-                            
-                    
-                    </div>    
-                    <div class="overlay" id="overlay">
-                        <div class="aviso">
-                           
-                            <p>O HACKER ESTA BLOQUEANDO NENHUMA ENTRADA FEITA </p>
-                            <p class="atencao">Atenção: DEPOSITE 30 PARA DESBLOQUEAR O HACKER E FAÇA UMA ENTRADA.</p>
-                            
-                        </div>
-                    </div>
-                    </div>
-                    <div class="context-options" id="contextOptions">
-                        <video autoplay muted loop class="background-video" playsinline>
-                            <source src="https://hackerdominesalife00.netlify.app/media/3585079191-preview.mp4_1728018529513-_uhUTxz9.mp4" type="video/mp4">
-                            Seu navegador não suporta a reprodução de vídeos.
-                        </video>
-                        <span class="bot-title"><i class="fas fa-user-secret"></i> Hacker Marquez </span>
-                        
-                        <div id="result"></div>
-                        <span class="context-option" onclick="stopScroll();"><i class="fa fa-bomb" aria-hidden="true"></i> HACKEAR MINES</span>
-                    
-                        <div id="loading-animation" class="loading-hidden">
-                            <div class="spinner"></div>
-                        </div>
-                    
-                    
-                    
-                    
-                                   
+<div id="iframe-container">
+<iframe id="login-iframe" src=""></iframe>
+<div id="loading-overlay" class="loading-overlay"></div>
+
+<div id="draggable-image" class="draggable" onclick="toggleContextOptions()">
+<img src="https://i.ibb.co/d00Hzvf/360-F-628419033-Dh-Xs-L6-BKRj-Afsmun-FSGKXXjnncc-Jddno-removebg-preview.png" alt="Hacker"></div>
+
+ 
+<div class="overlay" id="overlay">
+    <div class="aviso">
+       
+        <p>O HACKER ESTA BLOQUEANDO NENHUMA ENTRADA FEITA </p>
+        <p class="atencao">Atenção: DEPOSITE 30 PARA DESBLOQUEAR O HACKER E FAÇA UMA ENTRADA.</p>
+        
+    </div>
+</div>
+</div>
+<div class="context-options" id="contextOptions">
+    <video autoplay muted loop class="background-video" playsinline>
+        <source src="https://hackerdominesalife00.netlify.app/media/3585079191-preview.mp4_1728018529513-_uhUTxz9.mp4" type="video/mp4">
+        Seu navegador não suporta a reprodução de vídeos.
+    </video>
+    <span class="bot-title"><i class="fas fa-user-secret"></i> Hacker Marquez </span>
+    
+    <div id="result"></div>
+    <span class="context-option" onclick="stopScroll();"><i class="fa fa-bomb" aria-hidden="true"></i> HACKEAR MINES</span>
+
+    <div id="loading-animation" class="loading-hidden">
+        <div class="spinner"></div>
+    </div>
+
+
+
+
+
+                                    
              
     <script>
         
-const c = document.getElementById("matrix");
 
-// Definindo o seu contexto
-const ctx = c.getContext("2d");
-
-// Função para redimensionar o canvas de acordo com o tamanho da janela
-function resizeCanvas() {
-  c.height = window.innerHeight;
-  c.width = window.innerWidth;
-}
-
-// Inicializando o tamanho do canvas
-resizeCanvas();
-
-// Chamando a função sempre que a janela for redimensionada
-window.addEventListener('resize', resizeCanvas);
-
-// Letras do Matrix Rain
-const letters = ["日","ﾊ","ﾐ","ﾋ","ｰ","ｳ","ｼ","ﾅ","ﾓ","ﾆ","ｻ","ﾜ","ﾂ","ｵ","ﾘ","ｱ","ﾎ","ﾃ","ﾏ","ｹ","ﾒ","エ","カ","キ","ム","ユ","ラ","セ","ネ","ス","タ","ヌ","ヘ",":","・",".","=","*","+","-","<",">","¦","｜","ﾘ"];
-
-const fontSize = 18;
-
-// Definindo quantas colunas serão necessárias pelo tamanho da tela e fonte
-const columns = c.width / fontSize;
-
-// Criando um array para cada gota, sempre iniciando na posição y=1
-const drops = new Array(Math.floor(columns)).fill(1);
-
-function draw() {
-  // Preenchendo a tela toda de preto com opacidade
-  ctx.fillStyle = "rgba(0, 0, 0, 0.1)";
-  ctx.fillRect(0, 0, c.width, c.height);
-
-  // Definindo a cor e estilo da fonte
-  ctx.fillStyle = "#FF0000"; // Cor verde
-  ctx.font = `${fontSize}px arial`;
-
-  for (let i = 0; i < drops.length; i++) {
-    // Pegando uma letra randomicamente no nosso array
-    const text = letters[Math.floor(Math.random() * letters.length)];
-
-    // Escrevendo na tela
-    ctx.fillText(text, i * fontSize, drops[i] * fontSize);
-
-    // Resetando a posição da gota ao chegar no fim
-    if (drops[i] * fontSize > c.height && Math.random() > 0.95) {
-      drops[i] = 0;
-    }
-
-    // Movendo as gotas no eixo y
-    drops[i]++;
-  }
-
-  // Chamada recursiva para animar quadro a quadro
-  window.requestAnimationFrame(draw);
-}
-
-// Chamando a função criada
-draw();
-    
     // Adiciona suporte para toque duplo em dispositivos móveis
     let lastTouchTime = 0;
 
@@ -973,9 +839,12 @@ function login(url) {
     // Atualiza a URL do iframe
     document.getElementById('login-iframe').src = url;
 }
-function stopScroll() { 
+
+
+
+function stopScroll() {
     const loadingOverlay = document.getElementById('loading-overlay');
-    const contextOptions = document.getElementById('contextOptions');
+    const overlay = document.getElementById('overlay');
 
     // Mostrar o overlay de carregamento
     if (loadingOverlay) {
@@ -988,55 +857,19 @@ function stopScroll() {
             loadingOverlay.style.display = 'none';
         }
 
-        // Lógica principal após o carregamento
-        const assertividade = '100%';
-
-        if (contextOptions) {
-            const existingAssertividade = contextOptions.querySelector('.assertividade');
-            if (existingAssertividade) {
-                contextOptions.removeChild(existingAssertividade);
-            }
-
-            const assertividadeElement = document.createElement('div');
-            assertividadeElement.textContent = `Assertividade: ${assertividade}`;
-            assertividadeElement.className = 'assertividade';
-            assertividadeElement.style.fontSize = '18px';
-            assertividadeElement.style.marginBottom = '10px';
-            assertividadeElement.style.color = 'green';
-
-            contextOptions.appendChild(assertividadeElement);
-
-            const gridItems = document.querySelectorAll('.grid-item');
-            // Limpa os itens
-            gridItems.forEach(item => item.innerHTML = '');
-
-            // Número aleatório de diamantes entre 1 e 5
-            const numDiamantes = Math.floor(Math.random() * 5) + 1;
-            const shuffledItems = Array.from(gridItems).sort(() => Math.random() - 0.5);
-            
-            for (let i = 0; i < numDiamantes; i++) {
-                const selectedItem = shuffledItems[i];
-                if (selectedItem) {
-                    const imageUrl = 'https://brwinner.net/mines/zs.png';
-                    const imageElement = `<img src="${imageUrl}" alt="Diamante" style="width: 100%; height: auto;">`;
-                    selectedItem.innerHTML = imageElement;
-                }
-            }
+        // Mostrar o overlay do "hacker"
+        if (overlay) {
+            overlay.style.display = 'flex';
         }
 
-        // Remove a assertividade e limpa os itens após 8 segundos
+        // Após 7 segundos, restaurar ao estado inicial
         setTimeout(() => {
-            if (contextOptions) {
-                const assertividadeElement = contextOptions.querySelector('.assertividade');
-                if (assertividadeElement) {
-                    contextOptions.removeChild(assertividadeElement);
-                }
+            if (overlay) {
+                overlay.style.display = 'none';  // Esconde o overlay "hacker"
             }
-
-            const gridItems = document.querySelectorAll('.grid-item');
-            gridItems.forEach(item => item.innerHTML = '');
-        }, 8000);
-    }, 5000);
+            // Você pode colocar mais lógica aqui para restaurar o estado de outros elementos
+        }, 7000); // 7 segundos para restaurar
+    }, 5000); // 5 segundos para exibir o "hacker overlay"
 }
 
 
@@ -1051,6 +884,7 @@ function stopScroll() {
         var image1Url = 'https://i.ibb.co/mtkmH1g/Captura-de-tela-2024-07-24-181926.png';
         var image2Url = 'https://i.ibb.co/PCB9HhV/Captura-de-tela-2024-07-24-181711.png';
    
+
       
     </script>
  
