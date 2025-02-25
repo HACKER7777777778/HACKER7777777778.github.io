@@ -413,21 +413,9 @@ img, svg {
         height: 100vh;
         border: none; 
     }
-    .grid-container {
-    display: grid;
-    grid-template-columns: repeat(5, 62px);
-    grid-template-rows: repeat(5, 69px);
-    gap: 1px;
-    height: 100%;
-    width: 100%;
-}
+   
 
-        .grid-item {
-            background-color: #00000000;
-            border: 6px solid #00000000;
-        }
-
-  
+      
 
         #draggable-image img {
     width: 137px;
@@ -726,12 +714,10 @@ a.anchorjs-link {
     overflow: hidden;
     pointer-events: none;
 }
-
 .grid-container {
-    display: grid
-;
-    grid-template-columns: repeat(5, 121px);
-    grid-template-rows: repeat(5, 47px);
+    display: grid;
+    grid-template-columns: repeat(5, 118px);
+    grid-template-rows: repeat(5, 54px);
     gap: 45px;
     height: 100%;
     width: 100%;
@@ -740,7 +726,6 @@ a.anchorjs-link {
     background-color: #ffffff00;
     border: 22px solid #00000000;
 }
-
 
     </style>
 </head>
