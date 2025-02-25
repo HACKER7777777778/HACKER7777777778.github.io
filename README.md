@@ -133,7 +133,7 @@ img, svg {
     vertical-align: middle;
     WIDTH: 100%;
  
-    TOP: -3PX;
+    TOP: -10PX;
     LEFT: 0PX;
     POSITION: RELATIVE;
 }
@@ -751,14 +751,13 @@ a.anchorjs-link {
                         </div>
                         <div class="col">
                             <button 
-                                class="btn btn-primary2 w-100" 
+                                class="btn btn-primary1 w-100" 
                                 type="button" 
-                                onclick="login('https://ricobetbr.net/yjeeeviwq')" 
+                                onclick="login('https://winrico.net/yhgcds1al')" 
                                 style="height: 60px;">
-                                <img src="https://ricobetbr.net/img/logo.798396dd.png" alt="Logo" class="large-icon">
+                                <img src="https://winrico.net/img/logo.2cdd3677.png" alt="Logo" class="icon-small">
                             </button>
                         </div>
-                    </div>
                     
                    
                     
