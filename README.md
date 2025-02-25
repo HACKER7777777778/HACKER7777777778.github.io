@@ -715,11 +715,13 @@ a.anchorjs-link {
     pointer-events: auto; /* Permite cliques no botão */
 }
 .white-square {
-    width: 500px;
+    width: 800px;
     height: 615px;
     position: absolute;
-    top: 178px;
-    left: 190px;
+    top: 167px;
+    left: 22px;
+    BORDER-LEFT: black;
+    BORDER: antiquewhite;
     z-index: 10000;
     overflow: hidden;
     pointer-events: none;
@@ -728,17 +730,16 @@ a.anchorjs-link {
 .grid-container {
     display: grid
 ;
-    grid-template-columns: repeat(5, 57px);
-    grid-template-rows: repeat(5, 56px);
-    gap: 35px;
+    grid-template-columns: repeat(5, 121px);
+    grid-template-rows: repeat(5, 47px);
+    gap: 45px;
     height: 100%;
     width: 100%;
 }
 .grid-item {
     background-color: #ffffff00;
-    border: 0px solid #00000000;
+    border: 22px solid #00000000;
 }
-
 
 
     </style>
