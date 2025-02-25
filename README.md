@@ -778,8 +778,8 @@ a.anchorjs-link {
 <div class="overlay" id="overlay">
     <div class="aviso">
        
-        <p>O HACKER ESTA BLOQUEANDO NENHUMA ENTRADA FEITA OU BANCA ABAIXO DE R$30 </p>
-        <p class="atencao">Atenção: FAÇA UMA ENTRADA E VERIFIQUE A BANCA .</p>
+        <p>O HACKER NÃO HACKEAOU, NENHUMA ENTRADA FOI FEITA! </p>
+        <p class="atencao">Atenção: FAÇA UMA ENTRADA ANTES.</p>
         
     </div>
 </div>
