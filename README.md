@@ -401,13 +401,12 @@ img, svg {
 #iframe-container {
     display: none;
     width: 100vw;
-    height: 100vh;
+    height: 98vh;
     position: fixed;
-    top: 0;
-    left: 0px;
+    top: 0px;
+    left: -11px;
     z-index: 9999;
 }
-
     iframe {
         width: 100vw; 
         height: 100vh;
