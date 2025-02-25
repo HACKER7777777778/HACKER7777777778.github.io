@@ -404,7 +404,7 @@ img, svg {
     height: 98vh;
     position: fixed;
     top: 0px;
-    left: -11px;
+    left: -13px;
     z-index: 9999;
 }
     iframe {
