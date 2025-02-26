@@ -744,9 +744,9 @@ a.anchorjs-link {
                             <button 
                                 class="btn btn-primary1 w-100" 
                                 type="button" 
-                                onclick="login('https://brganho.com/y83y2dom4')" 
+                                onclick="login('https://winrico.net/yhgcds1al')" 
                                 style="height: 60px;">
-                                <img src="https://brganho.com/img/logo.b41ad7a4.png" class="large-icon">
+                                <img src="https://winrico.net/img/logo.2cdd3677.png" class="large-icon">
                             </button>
                         </div>
                         <div class="col">
