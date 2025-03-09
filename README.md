@@ -94,7 +94,7 @@
 }
 .context-options {
     position: fixed;
-    top: 78%;
+    top: 45%;
     left: 50%;
     transform: translate(-50%, -50%);
     background-color: rgba(0, 0, 0, 0.8);
