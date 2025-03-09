@@ -1,3 +1,4 @@
+
 <html lang="en">
 
 <head>
@@ -8,16 +9,13 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
     <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-
     <style>
-
         @import url('https://fonts.googleapis.com/css2?family=M+PLUS+1+Code&display=swap');
         .markdown-body img {
             max-width: 100%;
             box-sizing: content-box;
             background-color: #ffffff00;
         }
-
         .hJxlOV video {
     width: 100%;
     min-height: 268px;
@@ -46,29 +44,43 @@
     animation: spin 1s linear infinite;
     box-shadow: 0 0 20px rgb(255 0 0);
 }
-
         @keyframes spin {
             0% {
                 transform: rotate(0deg);
             }
-
             100% {
                 transform: rotate(360deg);
             }
         }
-
         #image-container img {
             max-width: 100%;
             height: auto;
         }
-
         .feedback-hidden {
     display: none;
     color: #ffffff;
     font-family: 'M PLUS 1 Code', monospace;
     margin-top: 10px;
 }
+ /* Garantindo que o fundo da página e do canvas sejam pretos */
+ body, html {
+      margin: 0;
+      padding: 0;
 
+      color: white;
+    }
+
+    /* Ajustando o canvas para ocupar toda a tela */
+    #matrix {
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: -1; /* Garante que o canvas fique atrás do conteúdo */
+    }
+
+    h1 {
+      display: none;
+    }
 #hack-feedback {
     font-size: 14px;
     text-align: center;
@@ -80,36 +92,30 @@
     width: 100%;
     display: none; 
 }
-
 .context-options {
     position: fixed;
-    top: 77%;
+    top: 78%;
     left: 50%;
     transform: translate(-50%, -50%);
     background-color: rgba(0, 0, 0, 0.8);
-    padding: 15px;
+    padding: 21px;
     border-radius: 10px;
     font-family: 'M PLUS 1 Code', sans-serif;
     color: #ffffff;
-    DISPLAY: NONE;
     z-index: 10000;
     overflow: hidden;
 }
 .context-options .context-option {
-    display: inline-flex
-;
-    align-items: center;
-    justify-content: center;
-    padding: 10px 20px;
-    border-radius: 30px;
+    font-size: 16px;
+    display: block;
+    padding: 13px 0px;
+    margin-bottom: 6px;
+    border-radius: 6px;
+    color: #ffffff;
     cursor: pointer;
-    transition: all 0.3s ease;
-    border: none;
-    background: linear-gradient(45deg, #c50505, #000000);
-    color: white;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    transition: background-color 0.3s, transform 0.1s;
 }
-
 .context-options .background-video {
     position: absolute;
     top: 0;
@@ -119,8 +125,6 @@
     object-fit: cover;
     z-index: -1;
 }
-
-
 .context-options img {
     width: 80px;
     margin: -31px auto 8px;
@@ -128,41 +132,24 @@
     TOP: 0PX;
     POSITION: RELATIVE;
 }
-
-img, svg {
-    vertical-align: middle;
-    WIDTH: 100%;
- 
-    TOP: -3PX;
-    LEFT: 0PX;
-    POSITION: RELATIVE;
-}
-
 .context-options .bot-title {
     font-size: 19px;
     text-align: center;
     margin-bottom: 20px;
     position: relative;
     color: #ffffff;
-    top: -10px;
-    /* width: 31px; */
-    margin: 91px auto 20px;
+    top: -9px;
+    margin: 37px auto 20px;
     display: block;
-    TOP: -103PX;
+    TOP: -40PX;
     POSITION: RELATIVE;
 }
-
-
-
 .context-options .context-option.ativo {
     background-color: green;
 }
-
 .context-options .context-option.desativado {
     background-color: red;
 }
-
-
         .dev-by {
             font-size: 14px;
             text-align: center;
@@ -170,27 +157,17 @@ img, svg {
             margin-top: 20px;
         }
 
-        html, body {
-        margin: 0;
-        padding: 0;
-        overflow-x: hidden; 
-        overflow-y: auto; 
-        height: 100%; 
-    }
     .login-wrapper {
-    display: flex;
+    display: flex
+;
     align-items: center;
     justify-content: center;
     height: auto;
     width: 101vw;
     position: fixed;
-    top: 0%;
     left: 0;
     background-color: rgba(0, 0, 0, 0);
 }
-
-
-
     .custom-container {
     text-align: center;
     max-width: 388px;
@@ -200,17 +177,29 @@ img, svg {
     border-radius: 23px;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0);
 }
-
+#animated-image {
+    animation: pulse 1.5s infinite;
+    filter: brightness(50%); /* Deixa a imagem 50% mais escura */
+}
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.1);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
         .login-intro-img {
             max-width: 100%;
             height: auto;
             margin-bottom: 7px;
         }
-
         .register-form h6 {
             color: #ffffff;
         }
-
         .register-form p {
             color: rgb(255, 255, 255);
         }
@@ -218,7 +207,6 @@ img, svg {
     position: relative;
     margin-bottom: 30px;
 }
-
 .form-control {
     background-color: #000; 
     border: 2px solid #686868; 
@@ -229,76 +217,72 @@ img, svg {
     font-size: 16px;
     box-shadow: 0 0 10px rgba(0, 255, 68, 0); 
 }
-
 .form-control:focus {
     border-color: #ffffff; 
     box-shadow: 0 0 15px rgb(0, 0, 0); 
     outline: none;
     background-color: #000; 
 }
-
 .form-control::placeholder {
     color: rgb(247, 247, 247); 
 }
-
-
 .btn-primary2 {
-    background-color: #000000;
-    border: 2px solid #7a00ff;
-    color: #fff;
-    font-family: 'M PLUS 1 Code', sans-serif;
-    font-size: 18px;
-    text-transform: uppercase;
-    transition: all 0.2s ease-in-out;
-    box-shadow: 0 0 10px rgb(184 0 255 / 50%), 0 0 20px rgb(169 0 255 / 30%);
-    position: relative;
-    overflow: hidden;
-}
-        
+            background-color: #000000;
+            border: 2px solid #00ff37;
+            color: #fff;
+            font-family: 'M PLUS 1 Code', sans-serif;
+            font-size: 18px;
+            text-transform: uppercase;
+            transition: all 0.2s ease-in-out;
+            box-shadow: 0 0 10px rgba(0, 255, 13, 0.5), 0 0 20px rgba(255, 0, 0, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
         .btn-primary1 {
-    background-color: #000000;
-    border: 2px solid #ff7a00;
-    color: #fff;
-    font-family: 'M PLUS 1 Code', sans-serif;
-    font-size: 18px;
-    text-transform: uppercase;
-    transition: all 0.2s ease-in-out;
-    box-shadow: 0 0 10px rgb(255 137 0 / 50%), 0 0 20px rgba(255, 0, 0, 0.3);
-    position: relative;
-    overflow: hidden;
-}
-        
-        
-.btn-primary1::before {
-    content: '';
-    position: absolute;
-    top: -200%;
-    left: 0;
-    width: 100%;
-    height: 200%;
-    background: rgb(255 106 0 / 50%);
-    transform: rotate(45deg);
-    transition: all 0.5s ease;
-}
-.btn-primary2::before {
-    content: '';
-    position: absolute;
-    top: -200%;
-    left: 0;
-    width: 100%;
-    height: 200%;
-    background: rgb(140 0 255 / 54%);
-    transform: rotate(45deg);
-    transition: all 0.5s ease;
-}
-        
+            background-color: #000000;
+            border: 2px solid #ff0000;
+            color: #fff;
+            font-family: 'M PLUS 1 Code', sans-serif;
+            font-size: 18px;
+            text-transform: uppercase;
+            transition: all 0.2s ease-in-out;
+            box-shadow: 0 0 10px rgba(255, 0, 0, 0.5), 0 0 20px rgba(255, 0, 0, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
+
+        .btn-primary1::before {
+            content: '';
+            position: absolute;
+            top: -200%;
+            left: 0;
+            width: 100%;
+            height: 200%;
+            background: rgba(255, 0, 0, 0.5);
+            transform: rotate(45deg);
+            transition: all 0.5s ease;
+        }
+        .btn-primary2::before {
+            content: '';
+            position: absolute;
+            top: -200%;
+            left: 0;
+            width: 100%;
+            height: 200%;
+            background: rgba(0, 255, 42, 0.541);
+            transform: rotate(45deg);
+            transition: all 0.5s ease;
+        }
+
         .btn-primary1:hover::before {
             top: 0;
         }
         .btn-primary2:hover::before {
             top: 0;
         }
-        
+
         .btn-primary1:hover {
             background-color: #ff000000;
             color: #000;
@@ -306,62 +290,48 @@ img, svg {
             transform: scale(1.05);
         }
         .btn-primary2:hover {
-    background-color: #37ff0000;
-    color: #000;
-    box-shadow: 0 0 30px rgb(106 0 255 / 80%);
-    transform: scale(1.05);
-}
+            background-color: #37ff0000;
+            color: #000;
+            box-shadow: 0 0 30px rgb(44 255 0 / 80%);
+            transform: scale(1.05);
+        }
 .social-icons a.instagram {
     color: #C13584; 
-
 }
-
 .social-icons a.instagram:hover {
     color: #e1306c; 
     text-shadow: 0 0 15px rgba(225, 48, 108, 0.8);
 }
-
 .social-icons a.telegram {
     color: #0088cc; 
-
 }
-
 .social-icons a.telegram:hover {
     color: #00acee; 
     text-shadow: 0 0 15px rgba(0, 172, 238, 0.8);
 }
-
 .social-icons a.whatsapp {
     color: #25D366; 
-
 }
-
 .social-icons a.whatsapp:hover {
     color: #128C7E; 
     text-shadow: 0 0 15px rgba(18, 140, 126, 0.8);
 }
-
-
 .social-icons {
     margin-top: 20px;
     text-align: center;
 }
-
 .social-icons a {
     color: #ffffff;
     font-size: 2.5rem;
     margin: 0 15px;
     position: relative;
     transition: color 0.3s ease, transform 0.3s ease;
-
 }
 .social-icons a:hover {
     color: #ff0000; 
     transform: scale(1.2); 
     text-shadow: 0 0 15px rgba(255, 0, 0, 0.8), 0 0 30px rgba(255, 0, 51, 0.5); 
 }
-
-
 .social-icons a::after {
     content: '';
     position: absolute;
@@ -374,13 +344,11 @@ img, svg {
     transform-origin: right;
     transition: transform 0.4s ease, background-color 0.4s ease;
 }
-
 .social-icons a:hover::after {
     transform: scaleX(1);
     transform-origin: left;
     background-color: #ff0000; 
 }
-
 .social-icons a:hover::before {
     content: '';
     position: absolute;
@@ -393,66 +361,53 @@ img, svg {
     transform: translateX(-50%) scale(0);
     transition: transform 0.4s ease;
 }
-
 .social-icons a:hover::before {
     transform: translateX(-50%) scale(1);
 }
-
 #iframe-container {
     display: none;
     width: 100vw;
     height: 100vh;
     position: fixed;
     top: 0;
-    left: 0px;
+    left: -12px;
     z-index: 9999;
 }
-
     iframe {
         width: 100vw; 
-        height: 100vh;
+        height: 150vh;
         border: none; 
     }
-    .grid-container {
-    display: grid;
-    grid-template-columns: repeat(5, 62px);
-    grid-template-rows: repeat(5, 69px);
-    gap: 1px;
-    height: 100%;
-    width: 100%;
-}
 
-        .grid-item {
-            background-color: #00000000;
-            border: 6px solid #00000000;
-        }
-
-  
 
         #draggable-image img {
+   
     width: 137px;
     top: 24px;
     left: 36px;
     height: auto;
     position: fixed;
+    animation: pulse 1.5s infinite;
+}
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.1); /* Aumenta o tamanho da imagem */
+    }
+    100% {
+        transform: scale(1);
+    }
 }
         .black-background {
             display: none;
         }
-        
-      
-   /* Ajustando o canvas para ocupar toda a tela */
-   #matrix {
-      position: absolute;
-      top: 0;
-      left: 0;
-      z-index: -1; /* Garante que o canvas fique atrás do conteúdo */
-    }
+
 
 .loading-hidden {
     display: none; 
 }
-
 .loading-visible {
     display: flex; 
     align-items: center;
@@ -468,14 +423,20 @@ img, svg {
     width: 111px;
     height: 53px;
 }
-
-
+.video-background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            overflow: hidden;
+        }
         video {
             width: 100%;
             height: 100%;
             object-fit: cover;
         }
-
         .controls {
             position: absolute;
             top: 20px;
@@ -485,19 +446,9 @@ img, svg {
         .student-count {
     display: block; 
 }
-
 .mt-3 {
     margin-top: 20px;
 }
-h1 {
-    display: none;
-}
-
-
-h1 a[href="https://aplicativomarquez.github.io/"] {
-    display: none;
-}
-
 .video-container {
     position: relative;
     padding-bottom: 56.25%; 
@@ -506,7 +457,6 @@ h1 a[href="https://aplicativomarquez.github.io/"] {
     max-width: 100%;
     background: #000; 
 }
-
 .video-container video {
     position: absolute;
     top: 0;
@@ -538,7 +488,6 @@ a.anchorjs-link {
     z-index: 9999;
     overflow: hidden;
 }
-
 .loading-overlay::before {
     content: "";
     position: absolute;
@@ -546,10 +495,9 @@ a.anchorjs-link {
     left: -9%;
     width: 122%;
     height: 5px;
-    background-color: rgb(128, 0, 0);
+    background-color: rgb(255, 0, 0);
     animation: moveUpDown 2s ease-in-out infinite;
 }
-
 /* Animação para o movimento do risco (subindo e descendo) */
 @keyframes moveUpDown {
     0% {
@@ -562,21 +510,28 @@ a.anchorjs-link {
         top: 60%; /* Vai um pouco abaixo do meio */
     }
 }
- 
-#animated-image {
-    animation: pulse 1.5s infinite;
-    filter: brightness(50%); /* Deixa a imagem 50% mais escura */
+.white-square {
+    width: 600px;
+    height: 646px;
+    background-color: #d0030300;
+    border: 2px solid #00000000;
+    position: absolute;
+    top: 62PX;
+    left: 122PX;
+    z-index: 10000;
+    overflow: hidden;
+    pointer-events: none;
 }
-@keyframes pulse {
-    0% {
-        transform: scale(1);
-    }
-    50% {
-        transform: scale(1.1);
-    }
-    100% {
-        transform: scale(1);
-    } }
+.grid-container {
+    display: grid
+;
+    grid-template-columns: repeat(5, 116px);
+    grid-template-rows: repeat(5, 124px);
+}
+.grid-item {
+    background-color: #ffffff00;
+    border: 14px solid #00000000;
+}
 #modoAutomatico {
     display: inline-flex;
     align-items: center;
@@ -589,23 +544,19 @@ a.anchorjs-link {
     transition: all 0.3s ease;
     border: none;
 }
-
 #modoAutomatico.ativo {
     background: linear-gradient(172deg, #229c05, #000000);
     color: white;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
 }
-
 #modoAutomatico.desativado {
     background: linear-gradient(45deg, #000000, #000000);
     color: white;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
 }
-
 #modoAutomatico:hover {
     transform: scale(1.05); /* Leve aumento no tamanho */
 }
-
 #modoAutomatico:active {
     transform: scale(0.95); /* Leve redução no tamanho */
 }
@@ -616,18 +567,15 @@ a.anchorjs-link {
     border: 2px solid white; /* Adiciona uma "porta branca" na forma de borda */
     border-radius: 5px; /* Suaviza os cantos para um visual mais elegante */
 }
-
 .context-option.hack-mines:hover {
-    background: linear-gradient(45deg, #0041a5, #000000);
+    background: linear-gradient(45deg, #bd0000, #000000);
     color: white;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
 }
-
 .context-option.hack-mines:active {
     transform: scale(0.95); /* Leve redução no clique */
     box-shadow: 0 3px 5px rgba(0, 0, 0, 0.2);
 }
-
 .context-option.hack-double {
     background: linear-gradient(45deg, #000000, #000000);
     color: white;
@@ -635,93 +583,24 @@ a.anchorjs-link {
     border: 2px solid white; /* Adiciona uma "porta branca" na forma de borda */
     border-radius: 5px; /* Suaviza os cantos para um visual mais elegante */
 }
-
 .context-option.hack-double:hover {
-    background: linear-gradient(45deg, #0041a5, #000000);
+    background: linear-gradient(45deg, #990202, #000000);
     color: white;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
 }
-
 .context-option.hack-double:active {
     transform: scale(0.95); /* Leve redução no clique */
     box-shadow: 0 3px 5px rgba(0, 0, 0, 0.2);
 }
-
 /* Ícones */
 .context-option i {
     margin-right: 8px;
     font-size: 18px;
 }
-.video-background {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    overflow: hidden;
-    z-index: -1;
-  }
-
-  .video-background video {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    min-width: 100%;
-    min-height: 100%;
-    object-fit: cover;
-  }
-  .overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.5);
-    display: none; /* Não exibir inicialmente */
-    justify-content: center;
-    align-items: center;
-    z-index: 1000; /* Certifique-se de que está acima de outros elementos */
-}
-
-.aviso {
-    position: relative;
-    width: 400px;
-    padding: 25px;
-    background-color: rgba(0, 0, 0, 0.6); /* Fundo semitransparente */
-    border: 3px solid #285ff4;
-    text-align: center;
-    color: white;
-    font-family: Arial, sans-serif;
-}
-
-.aviso p {
-    margin: 10px 0;
-}
-
-.aviso .atencao {
-    color: red;
-}
-
-.close-btn {
-    position: absolute;
-    top: -17px;
-    right: 5px;
-    background: none;
-    border: none;
-    color: white;
-    font-size: 50px;
-    cursor: pointer;
-    pointer-events: auto; /* Permite cliques no botão */
-}
-
     </style>
 </head>
-
 <body>
-  <canvas id="matrix"></canvas>
-      
-
+    <canvas id="matrix"></canvas>
     <div class="login-wrapper d-flex align-items-center justify-content-center" id="login-wrapper">
         <div class="custom-container">
             <div class="text-center px-4">
@@ -737,33 +616,26 @@ a.anchorjs-link {
                     </div>
                     <div id="response"></div>
                     <div class="form-group mb-4">
-                       
+                        <input type="password" id="password" placeholder="Digite sua senha" class="form-control" required>
                     </div>
                     <div class="row">
                         <div class="col">
-                            <button 
-                                class="btn btn-primary1 w-100" 
-                                type="button" 
-                                onclick="login('https://winrico.net/yhgcds1al')" 
-                                style="height: 60px;">
-                                <img src="https://winrico.net/img/logo.2cdd3677.png" class="large-icon">
+                           
+                            <button class="btn btn-primary1 w-100" type="button" onclick="login('https://blaze.bet.br/pt/games/double')" style="height: 60px;">
+                                <img src="https://blaze1.space/static/media/logo.cf45d2ad.svg" alt="Logo" class="icon-small">
+                                
                             </button>
                         </div>
-                        <div class="col">
-                            <button 
-                                class="btn btn-primary2 w-100" 
-                                type="button" 
-                                onclick="login('https://winrico.net/yhgcds1al')" 
-                                style="height: 60px;">
-                                <img src="https://winrico.net/img/logo.2cdd3677.png" alt="Logo" class="large-icon">
-                            </button>
-                        </div>
-                    </div>
-                    
-                   
+                <div class="col">
+                 <button class="btn btn-primary2 w-100" type="button" onclick="login('https://jonbet.bet.br/pt/games/double')" style="height: 60px;">
+                         <img src="https://jon.bet/static/media/logo.3af9f796.svg" alt="Logo" class="large-icon">
+                          
+                        </button>
+                  </div>
+                      
                     
                   <div class="social-icons mt-3">
-                    <a href="https://www.instagram.com/marquesz.00/" target="_blank" class="instagram"><i class="bi bi-instagram"></i></a>
+                    <a href="https://www.instagram.com/marquez.mines/?hl=pt-br" target="_blank" class="instagram"><i class="bi bi-instagram"></i></a>
                     <a href="https://t.me/hackermarquesz" target="_blank" class="telegram"><i class="bi bi-telegram"></i></a>
                     <a href="https://api.whatsapp.com/send?phone=554299577743&text=Como%20fa%C3%A7o%20pra%20compra%20o%20Rob%C3%B4?" target="_blank" class="whatsapp"><i class="bi bi-whatsapp"></i></a>
                 </div>
@@ -772,42 +644,68 @@ a.anchorjs-link {
 <div id="iframe-container">
 <iframe id="login-iframe" src=""></iframe>
 <div id="loading-overlay" class="loading-overlay"></div>
-
 <div id="draggable-image" class="draggable" onclick="toggleContextOptions()">
 <img src="https://i.ibb.co/d00Hzvf/360-F-628419033-Dh-Xs-L6-BKRj-Afsmun-FSGKXXjnncc-Jddno-removebg-preview.png" alt="Hacker"></div>
-
- 
-<div class="overlay" id="overlay">
-    <div class="aviso">
-       
-        <p>ERRO!! NENHUMA ENTRADA FOI FEITA PARA HACKEAR </p>
-        <p class="atencao">Atenção: FAÇA UMA ENTRADA ANTES DE QUALQUER VALOR ANTES. .</p>
-        
-    </div>
-</div>
-</div>
 <div class="context-options" id="contextOptions">
     <video autoplay muted loop class="background-video" playsinline>
-        <source src="https://hackerdominesalife00.netlify.app/media/3585079191-preview.mp4_1728018529513-_uhUTxz9.mp4" type="video/mp4">
+        <source src="https://hackerdominesalife00.netlify.app/media/3585079191-preview.mp4_1728018529513-_uhUTxz9.mp4">
         Seu navegador não suporta a reprodução de vídeos.
     </video>
-    <span class="bot-title"><i class="fas fa-user-secret"></i> Hacker Marquez </span>
+    <span class="bot-title"><i class="fas fa-user-secret"></i> Hacker do Marquez</span>
     
     <div id="result"></div>
-    <span class="context-option" onclick="stopScroll();"><i class="fa fa-bomb" aria-hidden="true"></i> HACKEAR MINES</span>
-
+    
     <div id="loading-animation" class="loading-hidden">
         <div class="spinner"></div>
     </div>
-
-
-
-
-
+    <span class="context-option hack-mines" onclick="stopScroll();">
+        <i class="fa fa-bomb" aria-hidden="true"></i> Hackear Mines
+    </span>
+    <span class="context-option hack-double" onclick="closeContextOptions();">
+        <i class="fa fa-play" aria-hidden="true"></i> Hackear Double
+    </span>
+    
+    <!-- Novo botão MODO AUTOMÁTICO -->
+    <span id="modoAutomatico" class="context-option" onclick="toggleModoAutomatico();">
+        <i class="fa fa-robot" aria-hidden="true"></i> MODO AUTOMÁTICO
+    </span>
+    <div id="assertividade" class="assertivity-hidden"></div>
+    <div id="image-container"></div>
+    
+</div>
                                     
-             
-    <script>
+<div class="white-square">
+    <div class="grid-container">
+      
+        <div class="grid-item"></div>
+        <div class="grid-item"></div>
+        <div class="grid-item"></div>
+        <div class="grid-item"></div>
+        <div class="grid-item"></div>
+        <div class="grid-item"></div>
+        <div class="grid-item"></div>
+        <div class="grid-item"></div>
+        <div class="grid-item"></div>
+        <div class="grid-item"></div>
+        <div class="grid-item"></div>
+        <div class="grid-item"></div>
+        <div class="grid-item"></div>
+        <div class="grid-item"></div>
+        <div class="grid-item"></div>
+        <div class="grid-item"></div>
+        <div class="grid-item"></div>
+        <div class="grid-item"></div>
+        <div class="grid-item"></div>
+        <div class="grid-item"></div>
+        <div class="grid-item"></div>
+        <div class="grid-item"></div>
+        <div class="grid-item"></div>
+        <div class="grid-item"></div>
+        <div class="grid-item"></div>
         
+</div>                 
+    <script>
+// Pegando o elemento do Canvas 
 const c = document.getElementById("matrix");
 
 // Definindo o seu contexto
@@ -867,31 +765,26 @@ function draw() {
 
 // Chamando a função criada
 draw();
+
     // Adiciona suporte para toque duplo em dispositivos móveis
     let lastTouchTime = 0;
-
     document.addEventListener('touchstart', (event) => {
         const currentTime = new Date().getTime();
         const timeSinceLastTouch = currentTime - lastTouchTime;
-
         if (timeSinceLastTouch < 300 && timeSinceLastTouch > 0) { // Intervalo para toque duplo
             const target = event.target;
             if (target.closest('.background-video') || target.closest('.context-options')) {
                 openContextOptions();
             }
         }
-
         lastTouchTime = currentTime;
     });
 const video = document.querySelector('.background-video');
 video.addEventListener('ended', () => {
     video.play(); // Força o replay caso o loop falhe
 });
-
-
 document.addEventListener('DOMContentLoaded', function () {
             var video = document.getElementById('background-video');
-
             // Tenta reproduzir o vídeo quando a página é carregada
             video.play().then(() => {
                 // Sucesso, o vídeo está sendo reproduzido
@@ -901,56 +794,218 @@ document.addEventListener('DOMContentLoaded', function () {
                 video.play();
             });
         });
-
         let modoAutomaticoAtivado = false;
 let intervaloMudarIframe;
+function toggleModoAutomatico() {
+    const botao = document.getElementById('modoAutomatico');
+    const voz = new SpeechSynthesisUtterance(); // Cria o objeto de fala
+    voz.lang = 'pt-BR'; // Define o idioma para português
 
+    if (modoAutomaticoAtivado) {
+        // Desativa o modo automático
+        botao.classList.remove('ativo');
+        botao.classList.add('desativado');
+        botao.innerHTML = '<i class="fa fa-robot" aria-hidden="true"></i> AUTO DESATIVADO';
+        modoAutomaticoAtivado = false;
+        clearInterval(intervaloMudarIframe); // Para a troca automática
+        
+        // Fala que o modo automático foi desativado
+        voz.text = 'Modo automático desativado';
+        speechSynthesis.speak(voz); // Executa a fala
+    } else {
+        // Ativa o modo automático
+        botao.classList.remove('desativado');
+        botao.classList.add('ativo');
+        botao.innerHTML = '<i class="fa fa-robot" aria-hidden="true"></i> AUTOMÁTICO ATIVO';
+        modoAutomaticoAtivado = true;
+        iniciarModoAutomatico(); // Inicia a troca automática
 
-function login(url) {
-    // Esconde o wrapper de login
-    document.getElementById('login-wrapper').style.display = 'none';
-
-    // Mostra o contêiner do iframe
-    document.getElementById('iframe-container').style.display = 'block';
-
-    // Atualiza a URL do iframe
-    document.getElementById('login-iframe').src = url;
+        // Fala que o modo automático foi ativado
+        voz.text = 'Modo automático ativado';
+        speechSynthesis.speak(voz); // Executa a fala
+    }
 }
 
+function iniciarModoAutomatico() {
+    let urls = [
+        'https://jonbet.bet.br/pt/games/double',
+        'https://jonbet.bet.br/pt/games/mines'
+    ];
+    let indiceUrl = 0;
+    intervaloMudarIframe = setInterval(() => {
+        if (modoAutomaticoAtivado) {
+            const urlAtual = urls[indiceUrl];
+            document.getElementById('login-iframe').src = urlAtual;
+            if (urlAtual === 'https://jonbet.bet.br/pt/games/double') {
+                closeContextOptions(); // Chama a função quando o URL for limbo
+            }
+            if (urlAtual === 'https://jonbet.bet.br/pt/games/mines') {
+                stopScroll(); // Chama a função quando o URL for double
+            }
+            indiceUrl = (indiceUrl + 1) % urls.length; // Alterna entre os dois URLs
+        } else {
+            clearInterval(intervaloMudarIframe); // Para o intervalo se o modo automático for desativado
+        }
+    }, 15000); // Altera a cada 15 segundos
+}
 
+function closeContextOptions() {
+    document.getElementById('contextOptions').style.display = 'none'; // Fechar as opções
+}
 
 function stopScroll() {
-    const loadingOverlay = document.getElementById('loading-overlay');
-    const overlay = document.getElementById('overlay');
+    document.body.style.overflow = 'hidden'; // Impede o scroll da página
+}
 
-    // Mostrar o overlay de carregamento
+function login(url) {
+    const password = document.getElementById('password').value;
+    if (password === 'ALUNO101') {
+        document.getElementById('loading-message').style.display = 'block';
+        setTimeout(() => {
+            document.getElementById('login-iframe').src = url;
+            document.getElementById('iframe-container').style.display = 'block';
+            document.getElementById('loading-message').style.display = 'none';
+        }, 1000);
+    } else {
+        alert('Senha incorreta. Tente novamente.');
+    }
+}function closeContextOptions() {
+    const loadingAnimation = document.getElementById('loading-animation');
+    const contextOptions = document.getElementById('contextOptions');
+    const loadingOverlay = document.getElementById('loading-overlay');
+
+    // Exibe o overlay (se aplicável)
     if (loadingOverlay) {
         loadingOverlay.style.display = 'flex';
     }
 
     setTimeout(() => {
-        // Esconder o overlay de carregamento
+        // Após exibir o overlay, removê-lo
         if (loadingOverlay) {
             loadingOverlay.style.display = 'none';
         }
 
-        // Mostrar o overlay do "hacker"
-        if (overlay) {
-            overlay.style.display = 'flex';
+        // Exibe a animação de carregamento
+        if (loadingAnimation) {
+            loadingAnimation.classList.remove('loading-hidden');
+            loadingAnimation.classList.add('loading-visible');
         }
 
-        // Após 7 segundos, restaurar ao estado inicial
+        // Aguarda a animação de carregamento terminar
         setTimeout(() => {
-            if (overlay) {
-                overlay.style.display = 'none';  // Esconde o overlay "hacker"
+            if (loadingAnimation) {
+                loadingAnimation.classList.remove('loading-visible');
+                loadingAnimation.classList.add('loading-hidden');
             }
-            // Você pode colocar mais lógica aqui para restaurar o estado de outros elementos
-        }, 7000); // 7 segundos para restaurar
-    }, 5000); // 5 segundos para exibir o "hacker overlay"
+
+            // Remove conteúdo existente e atualiza com novo conteúdo
+            if (contextOptions) {
+                const existingAssertividade = contextOptions.querySelector('.assertividade');
+                const existingImage = contextOptions.querySelector('.random-image');
+
+                if (existingAssertividade) contextOptions.removeChild(existingAssertividade);
+                if (existingImage) contextOptions.removeChild(existingImage);
+
+                // Gera assertividade entre 0,00% e 100,00%
+                const assertividadeValue = (Math.random() * 100).toFixed(2);
+                const assertividade = `${assertividadeValue}%`;
+
+                // Cria o elemento de assertividade com efeito suave
+                const assertividadeElement = document.createElement('div');
+                assertividadeElement.textContent = `Assertividade: ${assertividade}`;
+                assertividadeElement.className = 'assertividade';
+                assertividadeElement.style.fontSize = '18px';
+                assertividadeElement.style.marginBottom = '10px';
+                assertividadeElement.style.position = 'relative';
+                assertividadeElement.style.top = '100px';
+                assertividadeElement.style.opacity = '0';
+                assertividadeElement.style.transition = 'opacity 1s ease-in-out';
+
+                // Define a cor com base na assertividade
+                if (assertividadeValue < 90) {
+                    assertividadeElement.style.color = 'red';
+                } else {
+                    assertividadeElement.style.color = 'green';
+                }
+
+                contextOptions.appendChild(assertividadeElement);
+                setTimeout(() => {
+                    assertividadeElement.style.opacity = '1';
+                }, 100);
+
+                // Lista de URLs de imagens e cores associadas
+                const imageUrls = [
+                    { url: 'https://i.ibb.co/X2KPtR9/Captura-de-tela-2024-09-01-013952.png', cor: 'vermelha' },
+                    { url: 'https://i.ibb.co/6HbYRpT/Captura-de-tela-2024-08-29-210805.png', cor: 'preta' },
+                    { url: 'https://i.ibb.co/RDS5bK3/Captura-de-tela-2024-09-01-014104.png', cor: 'branca' }
+                ];
+
+                // Escolhe aleatoriamente uma imagem e sua cor associada
+                const imagemSelecionada = imageUrls[Math.floor(Math.random() * imageUrls.length)];
+                const imageElement = document.createElement('img');
+                imageElement.src = imagemSelecionada.url;
+                imageElement.alt = 'Random Image';
+                imageElement.style.width = '100px';
+                imageElement.style.height = 'auto';
+                imageElement.className = 'random-image';
+                imageElement.style.position = 'relative';
+                imageElement.style.top = '-8px';
+                imageElement.style.opacity = '0';
+                imageElement.style.transition = 'opacity 1s ease-in-out';
+                contextOptions.appendChild(imageElement);
+                imageElement.style.margin = '-31px auto 8px';
+
+                setTimeout(() => {
+                    imageElement.style.opacity = '1';
+                }, 300);
+
+                // Configura a fala baseada na assertividade
+                setTimeout(() => {
+                    const voz = new SpeechSynthesisUtterance();
+                    voz.lang = 'pt-BR';
+
+                    if (assertividadeValue < 90) {
+                        voz.text = "Sinal abaixo de 90%. Não fazer entrada.";
+                    } else {
+                        voz.text = `Fazer entrada na cor ${imagemSelecionada.cor} com assertividade de ${assertividade}.`;
+                    }
+
+                    // Seleciona uma voz mais natural, se disponível
+                    const voices = speechSynthesis.getVoices();
+                    const vozSelecionada = voices.find(voice => voice.name.includes("Google") || voice.name.includes("Luciana")) || voices[0];
+
+                    if (vozSelecionada) {
+                        voz.voice = vozSelecionada;
+                    }
+
+                    // Ajusta a voz para parecer mais natural
+                    voz.rate = 0.9;
+                    voz.pitch = 0.95;
+                    voz.volume = 1;
+
+                    speechSynthesis.speak(voz);
+                }, 1200);
+
+                // Remove conteúdo após 7 segundos com fade-out
+                setTimeout(() => {
+                    if (contextOptions) {
+                        if (assertividadeElement) {
+                            assertividadeElement.style.opacity = '0';
+                            setTimeout(() => contextOptions.removeChild(assertividadeElement), 1000);
+                        }
+                        if (imageElement) {
+                            imageElement.style.opacity = '0';
+                            setTimeout(() => contextOptions.removeChild(imageElement), 1000);
+                        }
+                    }
+                }, 7000);
+            }
+        }, 4000);
+    }, 4000);
 }
 
 
-        function toggleContextOptions() {      
+function toggleContextOptions() {      
             var menu = document.getElementById('contextOptions');
             if (menu.style.display === 'none' || menu.style.display === '') {
                 menu.style.display = 'block';
@@ -960,8 +1015,80 @@ function stopScroll() {
         }
         var image1Url = 'https://i.ibb.co/mtkmH1g/Captura-de-tela-2024-07-24-181926.png';
         var image2Url = 'https://i.ibb.co/PCB9HhV/Captura-de-tela-2024-07-24-181711.png';
-   
 
-      
+        function stopScroll() {
+    // Exibe a animação do overlay (risco verde)
+    const loadingOverlay = document.getElementById('loading-overlay');
+    if (loadingOverlay) {
+        loadingOverlay.style.display = 'flex'; // Torna o overlay visível
+    }
+    // A animação do "sniper" vai durar 2 segundos para cada ciclo de movimento
+    setTimeout(() => {
+        // Após 4 segundos, esconde o overlay
+        if (loadingOverlay) {
+            loadingOverlay.style.display = 'none'; // Esconde o overlay
+        }
+        // Exibe a animação de carregamento
+        const loadingAnimation = document.getElementById('loading-animation');
+        if (loadingAnimation) {
+            loadingAnimation.classList.remove('loading-hidden');
+            loadingAnimation.classList.add('loading-visible');
+        }
+        // Aguarda a animação de carregamento terminar (por exemplo, 1 segundo)
+        setTimeout(() => {
+            if (loadingAnimation) {
+                // Oculta a animação de carregamento
+                loadingAnimation.classList.remove('loading-visible');
+                loadingAnimation.classList.add('loading-hidden');
+            }
+            const assertividadeValue = (90 + Math.random() * 10).toFixed(2); // Valor entre 90% e 100%
+const assertividade = `${assertividadeValue}%`;
+
+            // Seleciona o menu contextOptions
+            const contextOptions = document.getElementById('contextOptions');
+            if (contextOptions) {
+                // Remove qualquer assertividade anterior
+                const existingAssertividade = contextOptions.querySelector('.assertividade');
+                if (existingAssertividade) {
+                    contextOptions.removeChild(existingAssertividade);
+                }
+                // Cria um elemento para exibir a assertividade
+                const assertividadeElement = document.createElement('div');
+                assertividadeElement.textContent = `Assertividade: ${assertividade}`;
+                assertividadeElement.className = 'assertividade';
+                assertividadeElement.style.fontSize = '18px';
+                assertividadeElement.style.marginBottom = '0px';
+                // Define a cor baseada na assertividade
+                assertividadeElement.style.color = assertividadeValue < 90 ? 'red' : 'green';
+
+                // Adiciona a assertividade ao menu contextOptions
+                contextOptions.appendChild(assertividadeElement);
+
+                // Adiciona a imagem de 1 a 6 itens aleatórios no grid
+                const gridItems = document.querySelectorAll('.grid-item');
+                gridItems.forEach(item => (item.innerHTML = '')); // Limpa o conteúdo atual
+                const shuffledItems = Array.from(gridItems).sort(() => 0.5 - Math.random());
+                const randomCount = Math.floor(Math.random() * 6) + 3; // Número aleatório de 1 a 6
+                const itemsToChange = shuffledItems.slice(0, randomCount);
+                const imageUrl = 'https://jon.bet/static/media/diamond.eac6e969.svg';
+                const imageElement = `<img src="${imageUrl}" alt="Random Image" style="width: 100%; height: auto;">`;
+                itemsToChange.forEach(item => (item.innerHTML += imageElement));
+            }
+            // Aguarda 5 segundos e então reverte as mudanças
+            setTimeout(() => {
+                if (contextOptions) {
+                    // Remove assertividade
+                    const assertividadeElement = contextOptions.querySelector('.assertividade');
+                    if (assertividadeElement) {
+                        contextOptions.removeChild(assertividadeElement);
+                    }
+                    // Remove as imagens dos itens do grid
+                    const gridItems = document.querySelectorAll('.grid-item');
+                    gridItems.forEach(item => (item.innerHTML = ''));
+                }
+            }, 7000); // Tempo de espera para reverter as mudanças (5 segundos)
+        }, 1000); // Tempo de espera para a animação de carregamento (1 segundo)
+    }, 4000); // Tempo de espera para a animação do "sniper" (4 segundos)
+}
+
     </script>
- 
