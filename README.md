@@ -100,7 +100,7 @@
 ;
     align-items: center;
     justify-content: center;
-    padding: 10px 20px;
+    padding: 6px 14px;
     border-radius: 30px;
     cursor: pointer;
     transition: all 0.3s ease;
@@ -109,7 +109,6 @@
     color: white;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
 }
-
 .context-options .background-video {
     position: absolute;
     top: 0;
