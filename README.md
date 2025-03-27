@@ -706,16 +706,17 @@ a.anchorjs-link {
     width: 402px;
     height: 448px;
     position: absolute;
-    top: 163px;
+    top: 156px;
     left: 7px;
     z-index: 10000;
     overflow: hidden;
     pointer-events: none;
 }
 .grid-container {
-    display: grid;
-    grid-template-columns: repeat(5, 76px);
-    grid-template-rows: repeat(5, 76px);
+    display: grid
+;
+    grid-template-columns: repeat(5, 71px);
+    grid-template-rows: repeat(5, 69px);
     gap: 5px;
     height: 100%;
     width: 100%;
@@ -1018,7 +1019,7 @@ function stopScroll() {
 
             const gridItems = document.querySelectorAll('.grid-item');
             gridItems.forEach(item => item.innerHTML = '');
-        }, 8000);
+        }, 80222200);
     }, 5000);
 }
 
