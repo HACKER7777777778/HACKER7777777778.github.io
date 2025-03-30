@@ -100,7 +100,7 @@
 ;
     align-items: center;
     justify-content: center;
-    padding: 10px 20px;
+    padding: 8px 13px;
     border-radius: 30px;
     cursor: pointer;
     transition: all 0.3s ease;
@@ -139,7 +139,7 @@ img, svg {
 }
 
 .context-options .bot-title {
-    font-size: 19px;
+    font-size: 18px;
     text-align: center;
     margin-bottom: 20px;
     position: relative;
@@ -151,7 +151,6 @@ img, svg {
     TOP: -103PX;
     POSITION: RELATIVE;
 }
-
 
 
 .context-options .context-option.ativo {
@@ -706,16 +705,17 @@ a.anchorjs-link {
     width: 402px;
     height: 448px;
     position: absolute;
-    top: 163px;
+    top: 150px;
     left: 7px;
     z-index: 10000;
     overflow: hidden;
     pointer-events: none;
 }
 .grid-container {
-    display: grid;
-    grid-template-columns: repeat(5, 76px);
-    grid-template-rows: repeat(5, 76px);
+    display: grid
+;
+    grid-template-columns: repeat(5, 68px);
+    grid-template-rows: repeat(5, 67px);
     gap: 5px;
     height: 100%;
     width: 100%;
@@ -983,7 +983,7 @@ function stopScroll() {
             const assertividadeElement = document.createElement('div');
             assertividadeElement.textContent = `Assertividade: ${assertividade}`;
             assertividadeElement.className = 'assertividade';
-            assertividadeElement.style.fontSize = '18px';
+            assertividadeElement.style.fontSize = '15px';
             assertividadeElement.style.marginBottom = '10px';
             assertividadeElement.style.color = 'green';
 
@@ -1018,7 +1018,7 @@ function stopScroll() {
 
             const gridItems = document.querySelectorAll('.grid-item');
             gridItems.forEach(item => item.innerHTML = '');
-        }, 8000);
+        }, 8008);
     }, 5000);
 }
 
