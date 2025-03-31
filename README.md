@@ -706,7 +706,7 @@ a.anchorjs-link {
     height: 448px;
     position: absolute;
     top: 157px;
-    left: 7px;
+    left: 8px;
     z-index: 10000;
     overflow: hidden;
     pointer-events: none;
@@ -714,8 +714,8 @@ a.anchorjs-link {
 .grid-container {
     display: grid
 ;
-    grid-template-columns: repeat(5, 66px);
-    grid-template-rows: repeat(5, 65px);
+    grid-template-columns: repeat(5, 65px);
+    grid-template-rows: repeat(5, 64px);
     gap: 11px;
     height: 100%;
     width: 100%;
@@ -1018,7 +1018,7 @@ function stopScroll() {
 
             const gridItems = document.querySelectorAll('.grid-item');
             gridItems.forEach(item => item.innerHTML = '');
-        }, 800338);
+        }, 8008);
     }, 5000);
 }
 
