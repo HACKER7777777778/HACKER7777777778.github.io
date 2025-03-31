@@ -714,8 +714,8 @@ a.anchorjs-link {
 .grid-container {
     display: grid
 ;
-    grid-template-columns: repeat(5, 68px);
-    grid-template-rows: repeat(5, 67px);
+    grid-template-columns: repeat(5, 66px);
+    grid-template-rows: repeat(5, 68px);
     gap: 11px;
     height: 100%;
     width: 100%;
