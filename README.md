@@ -706,7 +706,7 @@ a.anchorjs-link {
     height: 448px;
     position: absolute;
     top: 157px;
-    left: 8px;
+    left: 10px;
     z-index: 10000;
     overflow: hidden;
     pointer-events: none;
@@ -715,7 +715,7 @@ a.anchorjs-link {
     display: grid
 ;
     grid-template-columns: repeat(5, 65px);
-    grid-template-rows: repeat(5, 64px);
+    grid-template-rows: repeat(5, 65px);
     gap: 11px;
     height: 100%;
     width: 100%;
