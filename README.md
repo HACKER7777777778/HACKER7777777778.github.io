@@ -781,7 +781,7 @@ a.anchorjs-link {
     <div class="aviso">
        
         <p>ERRO!! NENHUMA ENTRADA FOI FEITA PARA HACKEAR </p>
-        <p class="atencao">Atenção: FAÇA UMA ENTRADA ANTES DE QUALQUER VALOR ANTES. .</p>
+        <p class="atencao">Atenção: FAÇA UMA ENTRADA ANTES DE QUALQUER VALOR NO MINES...</p>
         
     </div>
 </div>
