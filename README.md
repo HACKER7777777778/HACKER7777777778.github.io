@@ -100,7 +100,7 @@
 ;
     align-items: center;
     justify-content: center;
-    padding: 6px 14px;
+    padding: 10px 20px;
     border-radius: 30px;
     cursor: pointer;
     transition: all 0.3s ease;
@@ -109,6 +109,7 @@
     color: white;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
 }
+
 .context-options .background-video {
     position: absolute;
     top: 0;
@@ -412,9 +413,21 @@ img, svg {
         height: 100vh;
         border: none; 
     }
-   
+    .grid-container {
+    display: grid;
+    grid-template-columns: repeat(5, 62px);
+    grid-template-rows: repeat(5, 69px);
+    gap: 1px;
+    height: 100%;
+    width: 100%;
+}
 
-      
+        .grid-item {
+            background-color: #00000000;
+            border: 6px solid #00000000;
+        }
+
+  
 
         #draggable-image img {
     width: 137px;
@@ -701,29 +714,7 @@ a.anchorjs-link {
     cursor: pointer;
     pointer-events: auto; /* Permite cliques no botão */
 }
-.white-square {
-    width: 402px;
-    height: 448px;
-    position: absolute;
-    top: 156px;
-    left: 7px;
-    z-index: 10000;
-    overflow: hidden;
-    pointer-events: none;
-}
-.grid-container {
-    display: grid
-;
-    grid-template-columns: repeat(5, 71px);
-    grid-template-rows: repeat(5, 70px);
-    gap: 5px;
-    height: 100%;
-    width: 100%;
-}
-.grid-item {
-    background-color: #ffffff00;
-    border: 15px solid #00000000;
-}
+
     </style>
 </head>
 
@@ -778,72 +769,42 @@ a.anchorjs-link {
                 </div>
                 
                     
-                    
-                <div id="iframe-container">
-                    <iframe id="login-iframe" src=""></iframe>
-                    <div id="loading-overlay" class="loading-overlay"></div>
-                    
-                    <div id="draggable-image" class="draggable" onclick="toggleContextOptions()">
-                    <img src="https://i.ibb.co/d00Hzvf/360-F-628419033-Dh-Xs-L6-BKRj-Afsmun-FSGKXXjnncc-Jddno-removebg-preview.png" alt="Hacker"></div>
-                    
-                    <div class="white-square">
-                        <div class="grid-container">
-                          
-                            <div class="grid-item"></div>
-                            <div class="grid-item"></div>
-                            <div class="grid-item"></div>
-                            <div class="grid-item"></div>
-                            <div class="grid-item"></div>
-                            <div class="grid-item"></div>
-                            <div class="grid-item"></div>
-                            <div class="grid-item"></div>
-                            <div class="grid-item"></div>
-                            <div class="grid-item"></div>
-                            <div class="grid-item"></div>
-                            <div class="grid-item"></div>
-                            <div class="grid-item"></div>
-                            <div class="grid-item"></div>
-                            <div class="grid-item"></div>
-                            <div class="grid-item"></div>
-                            <div class="grid-item"></div>
-                            <div class="grid-item"></div>
-                            <div class="grid-item"></div>
-                            <div class="grid-item"></div>
-                            <div class="grid-item"></div>
-                            <div class="grid-item"></div>
-                            <div class="grid-item"></div>
-                            <div class="grid-item"></div>
-                            <div class="grid-item"></div>
-                            
-                    
-                    </div>    
-                    <div class="overlay" id="overlay">
-                        <div class="aviso">
-                           
-                            <p>O HACKER ESTA BLOQUEANDO NENHUMA ENTRADA FEITA </p>
-                            <p class="atencao">Atenção: DEPOSITE 30 PARA DESBLOQUEAR O HACKER E FAÇA UMA ENTRADA.</p>
-                            
-                        </div>
-                    </div>
-                    </div>
-                    <div class="context-options" id="contextOptions">
-                        <video autoplay muted loop class="background-video" playsinline>
-                            <source src="https://hackerdominesalife00.netlify.app/media/3585079191-preview.mp4_1728018529513-_uhUTxz9.mp4" type="video/mp4">
-                            Seu navegador não suporta a reprodução de vídeos.
-                        </video>
-                        <span class="bot-title"><i class="fas fa-user-secret"></i> Hacker Marquez </span>
-                        
-                        <div id="result"></div>
-                        <span class="context-option" onclick="stopScroll();"><i class="fa fa-bomb" aria-hidden="true"></i> HACKEAR MINES</span>
-                    
-                        <div id="loading-animation" class="loading-hidden">
-                            <div class="spinner"></div>
-                        </div>
-                    
-                    
-                    
-                    
-                                   
+<div id="iframe-container">
+<iframe id="login-iframe" src=""></iframe>
+<div id="loading-overlay" class="loading-overlay"></div>
+
+<div id="draggable-image" class="draggable" onclick="toggleContextOptions()">
+<img src="https://i.ibb.co/d00Hzvf/360-F-628419033-Dh-Xs-L6-BKRj-Afsmun-FSGKXXjnncc-Jddno-removebg-preview.png" alt="Hacker"></div>
+
+ 
+<div class="overlay" id="overlay">
+    <div class="aviso">
+       
+        <p>ERRO!! NENHUMA ENTRADA FOI FEITA PARA HACKEAR </p>
+        <p class="atencao">Atenção: FAÇA UMA ENTRADA DE QUALQUER VALOR ANTES NO MINES...</p>
+        
+    </div>
+</div>
+</div>
+<div class="context-options" id="contextOptions">
+    <video autoplay muted loop class="background-video" playsinline>
+        <source src="https://hackerdominesalife00.netlify.app/media/3585079191-preview.mp4_1728018529513-_uhUTxz9.mp4" type="video/mp4">
+        Seu navegador não suporta a reprodução de vídeos.
+    </video>
+    <span class="bot-title"><i class="fas fa-user-secret"></i> Hacker Marquez </span>
+    
+    <div id="result"></div>
+    <span class="context-option" onclick="stopScroll();"><i class="fa fa-bomb" aria-hidden="true"></i> HACKEAR MINES</span>
+
+    <div id="loading-animation" class="loading-hidden">
+        <div class="spinner"></div>
+    </div>
+
+
+
+
+
+                                    
              
     <script>
         
@@ -906,7 +867,6 @@ function draw() {
 
 // Chamando a função criada
 draw();
-    
     // Adiciona suporte para toque duplo em dispositivos móveis
     let lastTouchTime = 0;
 
@@ -956,9 +916,12 @@ function login(url) {
     // Atualiza a URL do iframe
     document.getElementById('login-iframe').src = url;
 }
-function stopScroll() { 
+
+
+
+function stopScroll() {
     const loadingOverlay = document.getElementById('loading-overlay');
-    const contextOptions = document.getElementById('contextOptions');
+    const overlay = document.getElementById('overlay');
 
     // Mostrar o overlay de carregamento
     if (loadingOverlay) {
@@ -971,55 +934,19 @@ function stopScroll() {
             loadingOverlay.style.display = 'none';
         }
 
-        // Lógica principal após o carregamento
-        const assertividade = '100%';
-
-        if (contextOptions) {
-            const existingAssertividade = contextOptions.querySelector('.assertividade');
-            if (existingAssertividade) {
-                contextOptions.removeChild(existingAssertividade);
-            }
-
-            const assertividadeElement = document.createElement('div');
-            assertividadeElement.textContent = `Assertividade: ${assertividade}`;
-            assertividadeElement.className = 'assertividade';
-            assertividadeElement.style.fontSize = '18px';
-            assertividadeElement.style.marginBottom = '10px';
-            assertividadeElement.style.color = 'green';
-
-            contextOptions.appendChild(assertividadeElement);
-
-            const gridItems = document.querySelectorAll('.grid-item');
-            // Limpa os itens
-            gridItems.forEach(item => item.innerHTML = '');
-
-            // Número aleatório de diamantes entre 1 e 5
-            const numDiamantes = Math.floor(Math.random() * 5) + 1;
-            const shuffledItems = Array.from(gridItems).sort(() => Math.random() - 0.5);
-            
-            for (let i = 0; i < numDiamantes; i++) {
-                const selectedItem = shuffledItems[i];
-                if (selectedItem) {
-                    const imageUrl = 'https://brwinner.net/mines/zs.png';
-                    const imageElement = `<img src="${imageUrl}" alt="Diamante" style="width: 100%; height: auto;">`;
-                    selectedItem.innerHTML = imageElement;
-                }
-            }
+        // Mostrar o overlay do "hacker"
+        if (overlay) {
+            overlay.style.display = 'flex';
         }
 
-        // Remove a assertividade e limpa os itens após 8 segundos
+        // Após 7 segundos, restaurar ao estado inicial
         setTimeout(() => {
-            if (contextOptions) {
-                const assertividadeElement = contextOptions.querySelector('.assertividade');
-                if (assertividadeElement) {
-                    contextOptions.removeChild(assertividadeElement);
-                }
+            if (overlay) {
+                overlay.style.display = 'none';  // Esconde o overlay "hacker"
             }
-
-            const gridItems = document.querySelectorAll('.grid-item');
-            gridItems.forEach(item => item.innerHTML = '');
-        }, 7000);
-    }, 5000);
+            // Você pode colocar mais lógica aqui para restaurar o estado de outros elementos
+        }, 7000); // 7 segundos para restaurar
+    }, 5000); // 5 segundos para exibir o "hacker overlay"
 }
 
 
@@ -1034,6 +961,7 @@ function stopScroll() {
         var image1Url = 'https://i.ibb.co/mtkmH1g/Captura-de-tela-2024-07-24-181926.png';
         var image2Url = 'https://i.ibb.co/PCB9HhV/Captura-de-tela-2024-07-24-181711.png';
    
+
       
     </script>
  
