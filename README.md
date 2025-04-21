@@ -244,26 +244,26 @@ img, svg {
 
 .btn-primary2 {
     background-color: #000000;
-    border: 2px solid #7a00ff;
+    border: 2px solid #ffae00;
     color: #fff;
     font-family: 'M PLUS 1 Code', sans-serif;
     font-size: 18px;
     text-transform: uppercase;
     transition: all 0.2s ease-in-out;
-    box-shadow: 0 0 10px rgb(184 0 255 / 50%), 0 0 20px rgb(169 0 255 / 30%);
+    box-shadow: 0 0 10px rgba(255, 187, 0, 0.5), 0 0 20px rgb(169 0 255 / 30%);
     position: relative;
     overflow: hidden;
 }
         
         .btn-primary1 {
     background-color: #000000;
-    border: 2px solid #ff7a00;
+    border: 2px solid #ff0000;
     color: #fff;
     font-family: 'M PLUS 1 Code', sans-serif;
     font-size: 18px;
     text-transform: uppercase;
     transition: all 0.2s ease-in-out;
-    box-shadow: 0 0 10px rgb(255 137 0 / 50%), 0 0 20px rgba(255, 0, 0, 0.3);
+    box-shadow: 0 0 10px rgba(255, 0, 0, 0.5), 0 0 20px rgba(255, 0, 0, 0.3);
     position: relative;
     overflow: hidden;
 }
@@ -276,7 +276,7 @@ img, svg {
     left: 0;
     width: 100%;
     height: 200%;
-    background: rgb(255 106 0 / 50%);
+    background: rgba(255, 0, 0, 0.5);
     transform: rotate(45deg);
     transition: all 0.5s ease;
 }
@@ -287,7 +287,7 @@ img, svg {
     left: 0;
     width: 100%;
     height: 200%;
-    background: rgb(140 0 255 / 54%);
+    background: rgba(255, 217, 0, 0.54);
     transform: rotate(45deg);
     transition: all 0.5s ease;
 }
@@ -308,7 +308,7 @@ img, svg {
         .btn-primary2:hover {
     background-color: #37ff0000;
     color: #000;
-    box-shadow: 0 0 30px rgb(106 0 255 / 80%);
+    box-shadow: 0 0 30px rgba(255, 196, 0, 0.8);
     transform: scale(1.05);
 }
 .social-icons a.instagram {
@@ -753,9 +753,9 @@ a.anchorjs-link {
                             <button 
                                 class="btn btn-primary2 w-100" 
                                 type="button" 
-                                onclick="login('https://winrico.net/yhgcds1al')" 
+                                onclick="login('https://como.bet/yvrgjmbyb')" 
                                 style="height: 60px;">
-                                <img src="https://winrico.net/img/logo.2cdd3677.png" alt="Logo" class="large-icon">
+                                <img src="https://como.bet/img/logo.f62a3125.png" alt="Logo" class="large-icon">
                             </button>
                         </div>
                     </div>
@@ -764,8 +764,8 @@ a.anchorjs-link {
                     
                   <div class="social-icons mt-3">
                     <a href="https://www.instagram.com/marquesz.00/" target="_blank" class="instagram"><i class="bi bi-instagram"></i></a>
-                    <a href="https://t.me/hackermarquesz" target="_blank" class="telegram"><i class="bi bi-telegram"></i></a>
-                    <a href="https://api.whatsapp.com/send?phone=554299577743&text=Como%20fa%C3%A7o%20pra%20compra%20o%20Rob%C3%B4?" target="_blank" class="whatsapp"><i class="bi bi-whatsapp"></i></a>
+                    <a href="https://t.me/+sgo_UhmzljA0MzBh" target="_blank" class="telegram"><i class="bi bi-telegram"></i></a>
+                    <a href="https://wa.me/message/YYPLALEKW7IZK1" target="_blank" class="whatsapp"><i class="bi bi-whatsapp"></i></a>
                 </div>
                 
                     
@@ -780,8 +780,8 @@ a.anchorjs-link {
 <div class="overlay" id="overlay">
     <div class="aviso">
        
-        <p>ERRO!! NENHUMA ENTRADA FOI FEITA PARA HACKEAR </p>
-        <p class="atencao">Atenção: FAÇA UMA ENTRADA DE QUALQUER VALOR ANTES NO MINES...</p>
+        <p>ERRO!! NENHUMA ENTRADA FOI FEITA NO MINES PARA HACKEAR </p>
+        
         
     </div>
 </div>
