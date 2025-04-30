@@ -94,22 +94,29 @@
     DISPLAY: NONE;
     z-index: 10000;
     overflow: hidden;
+    filter: contrast(1.2) brightness(0.8);
+  
 }
 .context-options .context-option {
-    display: inline-flex
+  width: 165px;
+    height: 43px;
+    border: 2px solid rgb(255, 0, 0);
+    color: rgb(255, 0, 0);
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    background: rgba(0, 0, 0, 0.8);
+    display: flex
 ;
     align-items: center;
     justify-content: center;
-    padding: 10px 20px;
-    border-radius: 30px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    border: none;
-    background: linear-gradient(45deg, #c50505, #000000);
-    color: white;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    position: relative;
+    border-radius: 26px;
+    z-index: 3;
+    box-shadow: rgba(255, 0, 0, 0.5) 0px 0px 10px;
+    transition: background-color 0.3s, transform 0.3s;
+    transform: scale(1);
 }
-
 .context-options .background-video {
     position: absolute;
     top: 0;
@@ -244,13 +251,13 @@ img, svg {
 
 .btn-primary2 {
     background-color: #000000;
-    border: 2px solid #ffae00;
+    border: 2px solid #ffc400;
     color: #fff;
     font-family: 'M PLUS 1 Code', sans-serif;
     font-size: 18px;
     text-transform: uppercase;
     transition: all 0.2s ease-in-out;
-    box-shadow: 0 0 10px rgba(255, 187, 0, 0.5), 0 0 20px rgb(169 0 255 / 30%);
+    box-shadow: 0 0 10px rgba(255, 166, 0, 0.5), 0 0 20px rgba(255, 196, 0, 0.3);
     position: relative;
     overflow: hidden;
 }
@@ -263,7 +270,7 @@ img, svg {
     font-size: 18px;
     text-transform: uppercase;
     transition: all 0.2s ease-in-out;
-    box-shadow: 0 0 10px rgba(255, 0, 0, 0.5), 0 0 20px rgba(255, 0, 0, 0.3);
+    box-shadow: 0 0 10px rgba(255, 0, 0, 0.856), 0 0 20px rgba(255, 0, 0, 0.3);
     position: relative;
     overflow: hidden;
 }
@@ -287,7 +294,7 @@ img, svg {
     left: 0;
     width: 100%;
     height: 200%;
-    background: rgba(255, 217, 0, 0.54);
+    background: rgba(255, 238, 0, 0.54);
     transform: rotate(45deg);
     transition: all 0.5s ease;
 }
@@ -308,7 +315,7 @@ img, svg {
         .btn-primary2:hover {
     background-color: #37ff0000;
     color: #000;
-    box-shadow: 0 0 30px rgba(255, 196, 0, 0.8);
+    box-shadow: 0 0 30px rgba(255, 230, 0, 0.8);
     transform: scale(1.05);
 }
 .social-icons a.instagram {
@@ -413,21 +420,9 @@ img, svg {
         height: 100vh;
         border: none; 
     }
-    .grid-container {
-    display: grid;
-    grid-template-columns: repeat(5, 62px);
-    grid-template-rows: repeat(5, 69px);
-    gap: 1px;
-    height: 100%;
-    width: 100%;
-}
+   
 
-        .grid-item {
-            background-color: #00000000;
-            border: 6px solid #00000000;
-        }
-
-  
+      
 
         #draggable-image img {
     width: 137px;
@@ -714,7 +709,29 @@ a.anchorjs-link {
     cursor: pointer;
     pointer-events: auto; /* Permite cliques no botão */
 }
-
+.white-square {
+    width: 402px;
+    height: 448px;
+    position: absolute;
+    top: 156px;
+    left: 7px;
+    z-index: 10000;
+    overflow: hidden;
+    pointer-events: none;
+}
+.grid-container {
+    display: grid
+;
+    grid-template-columns: repeat(5, 71px);
+    grid-template-rows: repeat(5, 70px);
+    gap: 5px;
+    height: 100%;
+    width: 100%;
+}
+.grid-item {
+    background-color: #ffffff00;
+    border: 15px solid #00000000;
+}
     </style>
 </head>
 
@@ -765,46 +782,71 @@ a.anchorjs-link {
                   <div class="social-icons mt-3">
                     <a href="https://www.instagram.com/marquesz.00/" target="_blank" class="instagram"><i class="bi bi-instagram"></i></a>
                     <a href="https://t.me/+sgo_UhmzljA0MzBh" target="_blank" class="telegram"><i class="bi bi-telegram"></i></a>
-                    <a href="https://wa.me/message/YYPLALEKW7IZK1" target="_blank" class="whatsapp"><i class="bi bi-whatsapp"></i></a>
+                    <a href="https://api.whatsapp.com/send?phone=554299577743&text=Como%20fa%C3%A7o%20pra%20compra%20o%20Rob%C3%B4?" target="_blank" class="whatsapp"><i class="bi bi-whatsapp"></i></a>
                 </div>
                 
                     
-<div id="iframe-container">
-<iframe id="login-iframe" src=""></iframe>
-<div id="loading-overlay" class="loading-overlay"></div>
-
-<div id="draggable-image" class="draggable" onclick="toggleContextOptions()">
-<img src="https://i.ibb.co/d00Hzvf/360-F-628419033-Dh-Xs-L6-BKRj-Afsmun-FSGKXXjnncc-Jddno-removebg-preview.png" alt="Hacker"></div>
-
- 
-<div class="overlay" id="overlay">
-    <div class="aviso">
-       
-        <p>ERRO!! NENHUMA ENTRADA FOI FEITA NO MINES PARA HACKEAR </p>
-        
-        
-    </div>
-</div>
-</div>
-<div class="context-options" id="contextOptions">
-    <video autoplay muted loop class="background-video" playsinline>
-        <source src="https://hackerdominesalife00.netlify.app/media/3585079191-preview.mp4_1728018529513-_uhUTxz9.mp4" type="video/mp4">
-        Seu navegador não suporta a reprodução de vídeos.
-    </video>
-    <span class="bot-title"><i class="fas fa-user-secret"></i> Hacker Marquez </span>
-    
-    <div id="result"></div>
-    <span class="context-option" onclick="stopScroll();"><i class="fa fa-bomb" aria-hidden="true"></i> HACKEAR MINES</span>
-
-    <div id="loading-animation" class="loading-hidden">
-        <div class="spinner"></div>
-    </div>
-
-
-
-
-
-                                    
+                    
+                <div id="iframe-container">
+                    <iframe id="login-iframe" src=""></iframe>
+                    <div id="loading-overlay" class="loading-overlay"></div>
+                    
+                    <div id="draggable-image" class="draggable" onclick="toggleContextOptions()">
+                    <img src="https://i.ibb.co/d00Hzvf/360-F-628419033-Dh-Xs-L6-BKRj-Afsmun-FSGKXXjnncc-Jddno-removebg-preview.png" alt="Hacker"></div>
+                    
+                    <div class="white-square">
+                        <div class="grid-container">
+                          
+                            <div class="grid-item"></div>
+                            <div class="grid-item"></div>
+                            <div class="grid-item"></div>
+                            <div class="grid-item"></div>
+                            <div class="grid-item"></div>
+                            <div class="grid-item"></div>
+                            <div class="grid-item"></div>
+                            <div class="grid-item"></div>
+                            <div class="grid-item"></div>
+                            <div class="grid-item"></div>
+                            <div class="grid-item"></div>
+                            <div class="grid-item"></div>
+                            <div class="grid-item"></div>
+                            <div class="grid-item"></div>
+                            <div class="grid-item"></div>
+                            <div class="grid-item"></div>
+                            <div class="grid-item"></div>
+                            <div class="grid-item"></div>
+                            <div class="grid-item"></div>
+                            <div class="grid-item"></div>
+                            <div class="grid-item"></div>
+                            <div class="grid-item"></div>
+                            <div class="grid-item"></div>
+                            <div class="grid-item"></div>
+                            <div class="grid-item"></div>
+                            
+                    
+                    </div>    
+                    <div class="overlay" id="overlay">
+                        
+                    </div>
+                    </div>
+                    <div class="context-options" id="contextOptions">
+                        <video autoplay muted loop class="background-video" playsinline>
+                            <source src="https://hackerdominesalife00.netlify.app/media/3585079191-preview.mp4_1728018529513-_uhUTxz9.mp4" type="video/mp4">
+                            Seu navegador não suporta a reprodução de vídeos.
+                        </video>
+                        <span class="bot-title"><i class="fas fa-user-secret"></i> Hacker Marquez </span>
+                        
+                        <div id="result"></div>
+                        <span class="context-option" onclick="stopScroll();"><i class="fa fa-bomb" aria-hidden="true"></i> HACKEAR MINES</span>
+                    
+                        <div id="loading-animation" class="loading-hidden">
+                            <div class="spinner"></div>
+                        </div>
+                    
+                    
+                    
+                    
+                                   
              
     <script>
         
@@ -867,6 +909,7 @@ function draw() {
 
 // Chamando a função criada
 draw();
+    
     // Adiciona suporte para toque duplo em dispositivos móveis
     let lastTouchTime = 0;
 
@@ -916,12 +959,9 @@ function login(url) {
     // Atualiza a URL do iframe
     document.getElementById('login-iframe').src = url;
 }
-
-
-
-function stopScroll() {
+function stopScroll() { 
     const loadingOverlay = document.getElementById('loading-overlay');
-    const overlay = document.getElementById('overlay');
+    const contextOptions = document.getElementById('contextOptions');
 
     // Mostrar o overlay de carregamento
     if (loadingOverlay) {
@@ -934,19 +974,55 @@ function stopScroll() {
             loadingOverlay.style.display = 'none';
         }
 
-        // Mostrar o overlay do "hacker"
-        if (overlay) {
-            overlay.style.display = 'flex';
+        // Lógica principal após o carregamento
+        const assertividade = '100%';
+
+        if (contextOptions) {
+            const existingAssertividade = contextOptions.querySelector('.assertividade');
+            if (existingAssertividade) {
+                contextOptions.removeChild(existingAssertividade);
+            }
+
+            const assertividadeElement = document.createElement('div');
+            assertividadeElement.textContent = `Assertividade: ${assertividade}`;
+            assertividadeElement.className = 'assertividade';
+            assertividadeElement.style.fontSize = '18px';
+            assertividadeElement.style.marginBottom = '10px';
+            assertividadeElement.style.color = 'green';
+
+            contextOptions.appendChild(assertividadeElement);
+
+            const gridItems = document.querySelectorAll('.grid-item');
+            // Limpa os itens
+            gridItems.forEach(item => item.innerHTML = '');
+
+            // Número aleatório de diamantes entre 1 e 5
+            const numDiamantes = Math.floor(Math.random() * 5) + 3;
+            const shuffledItems = Array.from(gridItems).sort(() => Math.random() - 0.5);
+            
+            for (let i = 0; i < numDiamantes; i++) {
+                const selectedItem = shuffledItems[i];
+                if (selectedItem) {
+                    const imageUrl = 'https://brwinner.net/mines/zs.png';
+                    const imageElement = `<img src="${imageUrl}" alt="Diamante" style="width: 100%; height: auto;">`;
+                    selectedItem.innerHTML = imageElement;
+                }
+            }
         }
 
-        // Após 7 segundos, restaurar ao estado inicial
+        // Remove a assertividade e limpa os itens após 8 segundos
         setTimeout(() => {
-            if (overlay) {
-                overlay.style.display = 'none';  // Esconde o overlay "hacker"
+            if (contextOptions) {
+                const assertividadeElement = contextOptions.querySelector('.assertividade');
+                if (assertividadeElement) {
+                    contextOptions.removeChild(assertividadeElement);
+                }
             }
-            // Você pode colocar mais lógica aqui para restaurar o estado de outros elementos
-        }, 7000); // 7 segundos para restaurar
-    }, 5000); // 5 segundos para exibir o "hacker overlay"
+
+            const gridItems = document.querySelectorAll('.grid-item');
+            gridItems.forEach(item => item.innerHTML = '');
+        }, 7000);
+    }, 5000);
 }
 
 
@@ -961,7 +1037,6 @@ function stopScroll() {
         var image1Url = 'https://i.ibb.co/mtkmH1g/Captura-de-tela-2024-07-24-181926.png';
         var image2Url = 'https://i.ibb.co/PCB9HhV/Captura-de-tela-2024-07-24-181711.png';
    
-
       
     </script>
  
