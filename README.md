@@ -959,9 +959,9 @@ function login(url) {
     // Atualiza a URL do iframe
     document.getElementById('login-iframe').src = url;
 }
-function stopScroll() { 
+function stopScroll() {
     const loadingOverlay = document.getElementById('loading-overlay');
-    const contextOptions = document.getElementById('contextOptions');
+    const overlay = document.getElementById('overlay');
 
     // Mostrar o overlay de carregamento
     if (loadingOverlay) {
@@ -974,56 +974,23 @@ function stopScroll() {
             loadingOverlay.style.display = 'none';
         }
 
-        // Lógica principal após o carregamento
-        const assertividade = '100%';
-
-        if (contextOptions) {
-            const existingAssertividade = contextOptions.querySelector('.assertividade');
-            if (existingAssertividade) {
-                contextOptions.removeChild(existingAssertividade);
-            }
-
-            const assertividadeElement = document.createElement('div');
-            assertividadeElement.textContent = `Assertividade: ${assertividade}`;
-            assertividadeElement.className = 'assertividade';
-            assertividadeElement.style.fontSize = '18px';
-            assertividadeElement.style.marginBottom = '10px';
-            assertividadeElement.style.color = 'green';
-
-            contextOptions.appendChild(assertividadeElement);
-
-            const gridItems = document.querySelectorAll('.grid-item');
-            // Limpa os itens
-            gridItems.forEach(item => item.innerHTML = '');
-
-            // Número aleatório de diamantes entre 1 e 5
-            const numDiamantes = Math.floor(Math.random() * 5) + 3;
-            const shuffledItems = Array.from(gridItems).sort(() => Math.random() - 0.5);
-            
-            for (let i = 0; i < numDiamantes; i++) {
-                const selectedItem = shuffledItems[i];
-                if (selectedItem) {
-                    const imageUrl = 'https://brwinner.net/mines/zs.png';
-                    const imageElement = `<img src="${imageUrl}" alt="Diamante" style="width: 100%; height: auto;">`;
-                    selectedItem.innerHTML = imageElement;
-                }
-            }
+        // Mostrar o overlay do "hacker"
+        if (overlay) {
+            overlay.style.display = 'flex';
         }
 
-        // Remove a assertividade e limpa os itens após 8 segundos
-        setTimeout(() => {
-            if (contextOptions) {
-                const assertividadeElement = contextOptions.querySelector('.assertividade');
-                if (assertividadeElement) {
-                    contextOptions.removeChild(assertividadeElement);
-                }
-            }
+        // Exibir alerta de erro
+        alert("Erro detectado! Nenhuma entrada feita no mines.");
 
-            const gridItems = document.querySelectorAll('.grid-item');
-            gridItems.forEach(item => item.innerHTML = '');
-        }, 7000);
-    }, 5000);
+        // Após 7 segundos, restaurar ao estado inicial
+        setTimeout(() => {
+            if (overlay) {
+                overlay.style.display = 'none';  // Esconde o overlay "hacker"
+            }
+        }, 7000); // 7 segundos para restaurar
+    }, 5000); // 5 segundos para exibir o "hacker overlay"
 }
+
 
 
         function toggleContextOptions() {      
