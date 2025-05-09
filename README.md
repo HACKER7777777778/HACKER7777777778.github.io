@@ -98,7 +98,7 @@
   
 }
 .context-options .context-option {
-  width: 165px;
+    width: 165px;
     height: 43px;
     border: 2px solid rgb(255, 0, 0);
     color: rgb(255, 0, 0);
@@ -106,17 +106,24 @@
     font-weight: bold;
     cursor: pointer;
     background: rgba(0, 0, 0, 0.8);
-    display: flex
-;
+    display: flex;
     align-items: center;
     justify-content: center;
     position: relative;
     border-radius: 26px;
     z-index: 3;
     box-shadow: rgba(255, 0, 0, 0.5) 0px 0px 10px;
-    transition: background-color 0.3s, transform 0.3s;
+    transition: background-color 0.3s, transform 0.2s, box-shadow 0.2s;
     transform: scale(1);
 }
+
+/* Efeito ao clicar */
+.context-options .context-option:active {
+    transform: scale(0.95);
+    box-shadow: 0 0 20px red, 0 0 40px rgba(255, 0, 0, 0.6);
+    background-color: rgba(255, 0, 0, 0.2);
+}
+
 .context-options .background-video {
     position: absolute;
     top: 0;
@@ -430,7 +437,11 @@ img, svg {
     left: 36px;
     height: auto;
     position: fixed;
+    filter: contrast(1.2) brightness(0.8);
 }
+
+
+
         .black-background {
             display: none;
         }
@@ -545,18 +556,53 @@ a.anchorjs-link {
     animation: moveUpDown 2s ease-in-out infinite;
 }
 
-/* Animação para o movimento do risco (subindo e descendo) */
+.loading-overlay::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    top: -10%;
+    width: 5px;
+    height: 120%;
+    background-color: rgb(128, 0, 0);
+    animation: moveLeftRight 2s ease-in-out infinite;
+}
+
+.hackeando-text {
+    color: red;
+    font-size: 28px;
+    font-weight: bold;
+    z-index: 10000;
+    position: relative;
+    text-align: center;
+    text-shadow: 0 0 10px red, 0 0 20px red;
+}
+
+/* Animação vertical do risco horizontal */
 @keyframes moveUpDown {
     0% {
-        top: 20%; /* Começa um pouco acima do meio */
+        top: 20%;
     }
     50% {
-        top: 50%; /* Vai até o meio */
+        top: 50%;
     }
     100% {
-        top: 60%; /* Vai um pouco abaixo do meio */
+        top: 60%;
     }
 }
+
+/* Animação horizontal do risco vertical */
+@keyframes moveLeftRight {
+    0% {
+        left: 20%;
+    }
+    50% {
+        left: 50%;
+    }
+    100% {
+        left: 80%;
+    }
+}
+
  
 #animated-image {
     animation: pulse 1.5s infinite;
@@ -959,6 +1005,7 @@ function login(url) {
     // Atualiza a URL do iframe
     document.getElementById('login-iframe').src = url;
 }
+// Função stopScroll
 function stopScroll() {
     const loadingOverlay = document.getElementById('loading-overlay');
     const overlay = document.getElementById('overlay');
@@ -966,6 +1013,15 @@ function stopScroll() {
     // Mostrar o overlay de carregamento
     if (loadingOverlay) {
         loadingOverlay.style.display = 'flex';
+
+        // Limpa o conteúdo do overlay
+        loadingOverlay.innerHTML = '';
+
+        // Adiciona a frase "HACKEANDO MINES" centralizada
+        const hackeandoText = document.createElement('div');
+        hackeandoText.textContent = 'HACKEANDO MINES';
+        hackeandoText.className = 'hackeando-text'; // Aplique a classe CSS para a animação
+        loadingOverlay.appendChild(hackeandoText);
     }
 
     setTimeout(() => {
@@ -990,8 +1046,6 @@ function stopScroll() {
         }, 7000); // 7 segundos para restaurar
     }, 5000); // 5 segundos para exibir o "hacker overlay"
 }
-
-
 
         function toggleContextOptions() {      
             var menu = document.getElementById('contextOptions');
