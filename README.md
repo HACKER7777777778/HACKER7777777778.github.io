@@ -1005,54 +1005,29 @@ function login(url) {
     // Atualiza a URL do iframe
     document.getElementById('login-iframe').src = url;
 }
+// Função stopScroll
 function stopScroll() {
     const loadingOverlay = document.getElementById('loading-overlay');
-    const contextOptions = document.getElementById('contextOptions');
     const overlay = document.getElementById('overlay');
 
     // Mostrar o overlay de carregamento
     if (loadingOverlay) {
         loadingOverlay.style.display = 'flex';
+
+        // Limpa o conteúdo do overlay
+        loadingOverlay.innerHTML = '';
+
+        // Adiciona a frase "HACKEANDO MINES" centralizada
+        const hackeandoText = document.createElement('div');
+        hackeandoText.textContent = 'HACKEANDO MINES';
+        hackeandoText.className = 'hackeando-text'; // Aplique a classe CSS para a animação
+        loadingOverlay.appendChild(hackeandoText);
     }
 
     setTimeout(() => {
+        // Esconder o overlay de carregamento
         if (loadingOverlay) {
             loadingOverlay.style.display = 'none';
-        }
-
-        // Lógica principal após o carregamento
-        const assertividade = '100%';
-
-        if (contextOptions) {
-            const existingAssertividade = contextOptions.querySelector('.assertividade');
-            if (existingAssertividade) {
-                contextOptions.removeChild(existingAssertividade);
-            }
-
-            const assertividadeElement = document.createElement('div');
-            assertividadeElement.textContent = `Assertividade: ${assertividade}`;
-            assertividadeElement.className = 'assertividade';
-            assertividadeElement.style.fontSize = '18px';
-            assertividadeElement.style.marginBottom = '10px';
-            assertividadeElement.style.color = 'green';
-
-            contextOptions.appendChild(assertividadeElement);
-
-            const gridItems = document.querySelectorAll('.grid-item');
-            gridItems.forEach(item => item.innerHTML = '');
-
-            // Número aleatório de diamantes entre 1 e 5
-            const numDiamantes = Math.floor(Math.random() * 5) + 1;
-            const shuffledItems = Array.from(gridItems).sort(() => Math.random() - 0.5);
-
-            for (let i = 0; i < numDiamantes; i++) {
-                const selectedItem = shuffledItems[i];
-                if (selectedItem) {
-                    const imageUrl = 'https://brwinner.net/mines/zs.png';
-                    const imageElement = `<img src="${imageUrl}" alt="Diamante" style="width: 100%; height: auto;">`;
-                    selectedItem.innerHTML = imageElement;
-                }
-            }
         }
 
         // Mostrar o overlay do "hacker"
@@ -1060,25 +1035,18 @@ function stopScroll() {
             overlay.style.display = 'flex';
         }
 
-        // Remove a assertividade e limpa os itens após 7 segundos
+        // Exibir alerta de erro
+        alert("Erro detectado! Nenhuma entrada feita no mines.");
+
+        // Após 7 segundos, restaurar ao estado inicial
         setTimeout(() => {
-            if (contextOptions) {
-                const assertividadeElement = contextOptions.querySelector('.assertividade');
-                if (assertividadeElement) {
-                    contextOptions.removeChild(assertividadeElement);
-                }
-            }
-
-            const gridItems = document.querySelectorAll('.grid-item');
-            gridItems.forEach(item => item.innerHTML = '');
-
             if (overlay) {
-                overlay.style.display = 'none';
+                overlay.style.display = 'none';  // Esconde o overlay "hacker"
             }
-        }, 7000);
-
-    }, 5000);
+        }, 7000); // 7 segundos para restaurar
+    }, 5000); // 5 segundos para exibir o "hacker overlay"
 }
+
 
         function toggleContextOptions() {      
             var menu = document.getElementById('contextOptions');
