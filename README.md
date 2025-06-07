@@ -19,7 +19,7 @@
             height: 100%;
             overflow-x: hidden;
             font-family: 'M PLUS 1 Code', monospace;
-            background: #00000000;
+            background: #000 !important;
             color: #fff;
         }
 
@@ -38,11 +38,6 @@
             opacity: 0 !important;
             position: absolute !important;
             left: -9999px !important;
-        }
-
-        /* Forçar remoção de elementos GitHub */
-        body > *:not(.video-background):not(#matrix):not(.main-container):not(#loading):not(#loading-overlay):not(#contextOptions):not(.white-square):not(#iframe-container):not(#hacker-icon):not(script) {
-            display: none !important;
         }
 
         /* Tornar fundos de imagens transparentes */
@@ -244,7 +239,9 @@
             
             .btn-custom img {
                 max-width: 200px;
-                max-height: 50px;
+                max-height: 80px;
+                width: 80%;
+                height: auto;
             }
 
             .social-icons {
@@ -348,11 +345,11 @@
         /* Fixed Hacker Icon */
         .hacker-icon {
             position: fixed;
-            top: 80%;
-            right: 75%;
+            top: 20px;
+            right: 20px;
             width: 120px;
             height: 120px;
-            background: rgba(0, 0, 0, 0);
+            background: rgba(0, 0, 0, 0.8);
             border: 2px solid #ff0000;
             border-radius: 50%;
             display: none;
