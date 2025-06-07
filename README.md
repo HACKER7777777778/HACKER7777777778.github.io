@@ -1,964 +1,891 @@
-
+<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-    <title>MINES - Hacker Da Blaze</title>
-    <meta name="description" content="Jogue MINES e ganhe até 57% de desconto no Hacker Da Blaze!">
-    <meta name="theme-color" content="#4c1d95">
-    
-    <!-- PWA Meta Tags -->
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <meta name="apple-mobile-web-app-title" content="MINES Game">
-    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projeto Mobile</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=M+PLUS+1+Code:wght@400;700&display=swap');
+
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            -webkit-tap-highlight-color: transparent;
         }
 
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            background: linear-gradient(135deg, #4c1d95, #1e3a8a, #312e81);
-            min-height: 100vh;
-            color: white;
-            padding: 0.5rem;
-            overflow-x: hidden;
-            -webkit-font-smoothing: antialiased;
-            -moz-osx-font-smoothing: grayscale;
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 0.5rem;
-        }
-
-        .card {
-            background: rgba(0, 0, 0, 0.3);
-            border: 1px solid rgba(147, 51, 234, 0.3);
-            border-radius: 12px;
-            padding: 1rem;
-            margin-bottom: 1rem;
-            backdrop-filter: blur(10px);
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
-        }
-
-        .header {
-            text-align: center;
-            background: rgba(0, 0, 0, 0.2);
-            border: 1px solid rgba(147, 51, 234, 0.3);
-            padding: 1rem 0.5rem;
-        }
-
-        .title {
-            font-size: 1.5rem;
-            font-weight: bold;
-            margin-bottom: 0.5rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 0.5rem;
-            flex-wrap: wrap;
-        }
-
-        .subtitle {
-            color: #c4b5fd;
-            margin-bottom: 0.5rem;
-            font-size: 0.9rem;
-        }
-
-        .highlight {
-            color: #fde047;
-            font-weight: bold;
-            font-size: 0.8rem;
-            text-align: center;
-        }
-
-        .player-id {
-            color: #86efac;
-            font-size: 0.75rem;
-            margin-top: 0.5rem;
-        }
-
-        .notification {
-            position: fixed;
-            top: 0.5rem;
-            right: 0.5rem;
-            left: 0.5rem;
-            background: #16a34a;
-            color: white;
-            padding: 0.75rem;
-            border-radius: 8px;
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
-            border: 1px solid #22c55e;
-            z-index: 1000;
-            animation: slideDown 0.5s ease-out;
-            display: none;
-            font-size: 0.875rem;
-        }
-
-        @keyframes slideDown {
-            from { transform: translateY(-100%); opacity: 0; }
-            to { transform: translateY(0); opacity: 1; }
-        }
-
-        .video-section {
-            background: rgba(0, 0, 0, 0.3);
-            border: 1px solid rgba(147, 51, 234, 0.3);
-        }
-
-        .video-container {
-            position: relative;
-            aspect-ratio: 16/9;
-            background: rgba(0, 0, 0, 0.5);
-            border-radius: 8px;
-            overflow: hidden;
-            margin-bottom: 1rem;
-        }
-
-        .video-placeholder {
-            width: 100%;
+        html, body {
             height: 100%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: rgba(0, 0, 0, 0.6);
+            overflow-x: hidden;
+            font-family: 'M PLUS 1 Code', monospace;
+            background: #000;
+            color: #fff;
         }
 
-        .play-button {
-            width: 3rem;
-            height: 3rem;
-            background: #dc2626;
-            border: none;
-            border-radius: 50%;
-            color: white;
-            font-size: 1.2rem;
-            cursor: pointer;
-            transition: all 0.3s;
-            touch-action: manipulation;
+        /* Canvas Matrix Background */
+        #matrix {
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: -1;
+            width: 100vw;
+            height: 100vh;
         }
 
-        .play-button:hover, .play-button:active {
-            background: #b91c1c;
-            transform: scale(1.1);
-        }
-
-        .button {
-            padding: 0.75rem 1rem;
-            border: none;
-            border-radius: 8px;
-            font-weight: bold;
-            cursor: pointer;
-            transition: all 0.3s;
-            margin: 0.25rem;
-            font-size: 0.875rem;
-            touch-action: manipulation;
-            min-height: 44px; /* iOS touch target */
-        }
-
-        .button-primary {
-            background: linear-gradient(135deg, #7c3aed, #2563eb);
-            color: white;
-        }
-
-        .button-primary:hover, .button-primary:active {
-            background: linear-gradient(135deg, #6d28d9, #1d4ed8);
-            transform: translateY(-1px);
-        }
-
-        .button-secondary {
-            background: linear-gradient(135deg, #eab308, #ea580c);
-            color: white;
-        }
-
-        .button-whatsapp {
-            background: linear-gradient(135deg, #16a34a, #059669);
-            color: white;
-            width: 100%;
-            font-size: 1rem;
-            padding: 1rem;
-        }
-
-        .button:disabled {
-            opacity: 0.5;
-            cursor: not-allowed;
-            transform: none;
-        }
-
-        .button-container {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 0.5rem;
-        }
-
-        .game-layout {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 1rem;
-        }
-
-        @media (min-width: 768px) {
-            .container {
-                padding: 1rem;
-            }
-            
-            .card {
-                padding: 1.5rem;
-                margin-bottom: 1.5rem;
-            }
-            
-            .title {
-                font-size: 2rem;
-            }
-            
-            .subtitle {
-                font-size: 1rem;
-            }
-            
-            .highlight {
-                font-size: 1rem;
-            }
-            
-            .game-layout {
-                grid-template-columns: 1fr 2fr;
-                gap: 1.5rem;
-            }
-            
-            .notification {
-                top: 1rem;
-                right: 1rem;
-                left: auto;
-                max-width: 300px;
-            }
-            
-            .play-button {
-                width: 4rem;
-                height: 4rem;
-                font-size: 1.5rem;
-            }
-        }
-
-        .status-panel {
-            background: rgba(0, 0, 0, 0.3);
-            border: 1px solid rgba(147, 51, 234, 0.3);
-            order: 2;
-        }
-
-        @media (min-width: 768px) {
-            .status-panel {
-                order: 1;
-            }
-        }
-
-        .badge {
-            background: rgba(107, 114, 128, 0.8);
-            color: white;
-            padding: 0.5rem 1rem;
-            border-radius: 6px;
-            font-size: 1rem;
-            display: inline-block;
-            width: 100%;
-            text-align: center;
-        }
-
-        .discount-display {
-            font-size: 2.5rem;
-            font-weight: bold;
-            color: #4ade80;
-            text-align: center;
-        }
-
-        @media (min-width: 768px) {
-            .discount-display {
-                font-size: 3rem;
-            }
-        }
-
-        .price-info {
-            border-top: 1px solid rgba(147, 51, 234, 0.3);
-            padding-top: 1rem;
-            margin-top: 1rem;
-        }
-
-        .original-price {
-            text-decoration: line-through;
-            color: #9ca3af;
-            font-size: 0.875rem;
-        }
-
-        .final-price {
-            font-size: 1.5rem;
-            font-weight: bold;
-            color: #4ade80;
-        }
-
-        @media (min-width: 768px) {
-            .final-price {
-                font-size: 2rem;
-            }
-        }
-
-        .winners-list {
-            border-top: 1px solid rgba(147, 51, 234, 0.3);
-            padding-top: 1rem;
-            margin-top: 1rem;
-        }
-
-        .winner-item {
-            background: rgba(34, 197, 94, 0.3);
-            border: 1px solid rgba(34, 197, 94, 0.3);
-            padding: 0.5rem;
-            border-radius: 4px;
-            margin-bottom: 0.25rem;
-            font-size: 0.75rem;
-        }
-
-        .game-board {
-            background: rgba(0, 0, 0, 0.3);
-            border: 1px solid rgba(147, 51, 234, 0.3);
-            order: 1;
-        }
-
-        @media (min-width: 768px) {
-            .game-board {
-                order: 2;
-            }
-        }
-
-        .grid {
-            display: grid;
-            grid-template-columns: repeat(5, 1fr);
-            gap: 0.25rem;
-            max-width: 350px;
-            margin: 0 auto;
-            padding: 0.5rem;
-        }
-
-        @media (min-width: 768px) {
-            .grid {
-                gap: 0.5rem;
-                max-width: 400px;
-                padding: 0;
-            }
-        }
-
-        .cell {
-            aspect-ratio: 1;
-            height: 3rem;
-            background: #374151;
-            border: 2px solid rgba(147, 51, 234, 0.5);
-            border-radius: 8px;
-            color: white;
-            font-weight: bold;
-            cursor: pointer;
-            transition: all 0.3s;
+        /* Main Container */
+        .main-container {
+            min-height: 100vh;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            font-size: 0.75rem;
-            touch-action: manipulation;
-            user-select: none;
+            padding: 20px;
+            position: relative;
+            z-index: 10;
         }
 
-        @media (min-width: 768px) {
-            .cell {
-                height: 4rem;
-                font-size: 1rem;
-            }
-        }
-
-        .cell:hover:not(:disabled), .cell:active:not(:disabled) {
-            background: #4b5563;
-            border-color: rgba(147, 51, 234, 0.8);
-            transform: scale(0.95);
-        }
-
-        .cell:disabled {
-            opacity: 0.5;
-            cursor: not-allowed;
-        }
-
-        .cell.revealed {
-            background: #16a34a;
-            transform: scale(1.05);
-        }
-
-        .cell.bomb {
-            background: #dc2626;
-            animation: shake 0.5s ease-in-out;
-        }
-
-        @keyframes shake {
-            0%, 100% { transform: translateX(0); }
-            25% { transform: translateX(-5px); }
-            75% { transform: translateX(5px); }
-        }
-
-        .instructions {
-            background: rgba(0, 0, 0, 0.2);
-            border: 1px solid rgba(147, 51, 234, 0.3);
-        }
-
-        .instructions ul {
-            list-style: none;
-            padding: 0;
-        }
-
-        .instructions li {
-            margin-bottom: 0.5rem;
-            font-size: 0.875rem;
-            line-height: 1.4;
-        }
-
-        .success-message {
-            background: rgba(34, 197, 94, 0.3);
-            border: 1px solid rgba(34, 197, 94, 0.5);
-            padding: 1rem;
-            border-radius: 8px;
-            text-align: center;
-        }
-
-        .warning-message {
-            background: rgba(220, 38, 38, 0.3);
-            border: 1px solid rgba(220, 38, 38, 0.5);
-            padding: 1rem;
-            border-radius: 8px;
-            text-align: center;
-            color: #fca5a5;
-        }
-
-        .hidden {
-            display: none;
-        }
-
-        .text-center {
-            text-align: center;
-        }
-
-        .mb-4 {
-            margin-bottom: 1rem;
-        }
-
-        .mt-4 {
-            margin-top: 1rem;
-        }
-
-        .space-y-4 > * + * {
-            margin-top: 1rem;
-        }
-
-        .flex {
-            display: flex;
-        }
-
-        .justify-center {
-            justify-content: center;
-        }
-
-        .gap-4 {
-            gap: 1rem;
-        }
-
-        /* Loading animation */
-        .loading {
-            display: inline-block;
-            width: 20px;
-            height: 20px;
-            border: 3px solid rgba(255,255,255,.3);
-            border-radius: 50%;
-            border-top-color: #fff;
-            animation: spin 1s ease-in-out infinite;
-        }
-
-        @keyframes spin {
-            to { transform: rotate(360deg); }
-        }
-
-        /* Pulse effect for important elements */
-        .pulse {
+        /* Logo Animation */
+        .logo-container {
+            margin-bottom: 2rem;
             animation: pulse 2s infinite;
         }
 
+        .logo-container img {
+            width: 120px;
+            height: 120px;
+            object-fit: contain;
+            filter: brightness(0.7);
+        }
+
         @keyframes pulse {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.7; }
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
         }
 
-        /* Smooth scrolling */
-        html {
-            scroll-behavior: smooth;
+        /* Title */
+        .main-title {
+            font-size: 2rem;
+            font-weight: bold;
+            text-align: center;
+            margin-bottom: 1rem;
+            color: #fff;
         }
 
-        /* Better touch feedback */
-        .cell:active {
-            background: #6b7280 !important;
+        /* Description */
+        .description {
+            text-align: center;
+            margin-bottom: 2rem;
+            max-width: 300px;
+            font-size: 0.9rem;
+            color: #ccc;
         }
 
-        .button:active {
-            transform: scale(0.98);
+        /* Buttons Container */
+        .buttons-container {
+            width: 100%;
+            max-width: 320px;
+            margin-bottom: 2rem;
         }
 
-        /* Prevent zoom on input focus (iOS) */
-        input, select, textarea {
-            font-size: 16px;
+        /* Custom Buttons */
+        .btn-custom {
+            width: 100%;
+            height: 85px;
+            border: 2px solid;
+            background: rgba(0, 0, 0, 0.95);
+            font-family: 'M PLUS 1 Code', monospace;
+            font-size: 1.1rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            transition: all 0.3s ease;
+            margin-bottom: 1rem;
+            position: relative;
+            overflow: hidden;
+            -webkit-tap-highlight-color: transparent;
+            touch-action: manipulation;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 15px 25px;
+            backdrop-filter: blur(10px);
+            border-radius: 8px;
         }
 
-        /* Safe area for notched devices */
-        @supports (padding: max(0px)) {
-            body {
-                padding-left: max(0.5rem, env(safe-area-inset-left));
-                padding-right: max(0.5rem, env(safe-area-inset-right));
-                padding-bottom: max(0.5rem, env(safe-area-inset-bottom));
+        .btn-custom img {
+            max-width: 220px;
+            max-height: 55px;
+            object-fit: contain;
+            filter: brightness(1.2) contrast(1.2) saturate(1.1);
+            image-rendering: -webkit-optimize-contrast;
+            image-rendering: crisp-edges;
+        }
+
+        .btn-custom:hover img, .btn-custom:active img {
+            filter: brightness(1.4) contrast(1.3) saturate(1.2);
+            transform: scale(1.05);
+        }
+
+        .btn-red {
+            border-color: #ff0000;
+            color: #ff0000;
+            box-shadow: 0 0 15px rgba(255, 0, 0, 0.4);
+        }
+
+        .btn-red:hover, .btn-red:active {
+            background: rgba(255, 0, 0, 0.1);
+            transform: scale(1.02);
+            box-shadow: 0 0 25px rgba(255, 0, 0, 0.7);
+        }
+
+        .btn-yellow {
+            border-color: #ffc400;
+            color: #ffc400;
+            box-shadow: 0 0 15px rgba(255, 196, 0, 0.4);
+        }
+
+        .btn-yellow:hover, .btn-yellow:active {
+            background: rgba(255, 196, 0, 0.1);
+            transform: scale(1.02);
+            box-shadow: 0 0 25px rgba(255, 196, 0, 0.7);
+        }
+
+        /* Social Icons */
+        .social-icons {
+            display: flex;
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .social-icons a {
+            color: #fff;
+            font-size: 2rem;
+            transition: all 0.3s ease;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        .social-icons a:hover {
+            transform: scale(1.2);
+        }
+
+        .social-icons .instagram:hover {
+            color: #e1306c;
+            text-shadow: 0 0 15px rgba(225, 48, 108, 0.8);
+        }
+
+        .social-icons .telegram:hover {
+            color: #0088cc;
+            text-shadow: 0 0 15px rgba(0, 136, 204, 0.8);
+        }
+
+        .social-icons .whatsapp:hover {
+            color: #25d366;
+            text-shadow: 0 0 15px rgba(37, 211, 102, 0.8);
+        }
+
+        /* Footer */
+        .footer-text {
+            text-align: center;
+            font-size: 0.8rem;
+            color: #666;
+        }
+
+        /* Mobile Optimizations */
+        @media (max-width: 480px) {
+            .main-title {
+                font-size: 1.5rem;
+            }
+
+            .logo-container img {
+                width: 100px;
+                height: 100px;
+            }
+
+            .buttons-container {
+                max-width: 280px;
+            }
+
+            .btn-custom {
+                height: 75px;
+                font-size: 1rem;
+                padding: 12px 20px;
+            }
+            
+            .btn-custom img {
+                max-width: 200px;
+                max-height: 50px;
+            }
+
+            .social-icons {
+                gap: 1.5rem;
+            }
+
+            .social-icons a {
+                font-size: 1.8rem;
+            }
+        }
+
+        @media (max-width: 320px) {
+            .main-title {
+                font-size: 1.3rem;
+            }
+
+            .buttons-container {
+                max-width: 260px;
+            }
+        }
+
+        /* Loading Animation */
+        .loading {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            z-index: 9999;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .spinner {
+            border: 4px solid #333;
+            border-top: 4px solid #ff0000;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* iFrame Container */
+        #iframe-container {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 9999;
+            background: #000;
+        }
+
+        #site-iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        /* Draggable Hacker Icon */
+        .hacker-icon {
+            position: fixed;
+            width: 80px;
+            height: 80px;
+            background: rgba(0, 0, 0, 0.8);
+            border: 2px solid #ff0000;
+            border-radius: 50%;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            cursor: move;
+            z-index: 10001;
+            font-size: 2rem;
+            color: #ff0000;
+            box-shadow: 0 0 20px rgba(255, 0, 0, 0.5);
+            transition: all 0.3s ease;
+            user-select: none;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            touch-action: none;
+            animation: hackerPulse 2s infinite;
+        }
+
+        .hacker-icon:hover {
+            transform: scale(1.1);
+            box-shadow: 0 0 30px rgba(255, 0, 0, 0.8);
+        }
+
+        .hacker-icon.dragging {
+            transform: scale(1.2);
+            box-shadow: 0 0 40px rgba(255, 0, 0, 1);
+        }
+
+        .hacker-icon img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            border-radius: 50%;
+        }
+
+        @keyframes hackerPulse {
+            0%, 100% { 
+                box-shadow: 0 0 20px rgba(255, 0, 0, 0.5);
+            }
+            50% { 
+                box-shadow: 0 0 30px rgba(255, 0, 0, 0.8);
+            }
+        }
+
+        /* Loading Overlay */
+        .loading-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 10002;
+            overflow: hidden;
+        }
+
+        .loading-overlay::before {
+            content: "";
+            position: absolute;
+            top: 40%;
+            left: -9%;
+            width: 122%;
+            height: 5px;
+            background-color: rgb(128, 0, 0);
+            animation: moveUpDown 2s ease-in-out infinite;
+        }
+
+        .loading-overlay::after {
+            content: "";
+            position: absolute;
+            left: 50%;
+            top: -10%;
+            width: 5px;
+            height: 120%;
+            background-color: rgb(128, 0, 0);
+            animation: moveLeftRight 2s ease-in-out infinite;
+        }
+
+        .hackeando-text {
+            color: red;
+            font-size: 28px;
+            font-weight: bold;
+            z-index: 10000;
+            position: relative;
+            text-align: center;
+            text-shadow: 0 0 10px red, 0 0 20px red;
+        }
+
+        /* Animação vertical do risco horizontal */
+        @keyframes moveUpDown {
+            0% {
+                top: 20%;
+            }
+            50% {
+                top: 50%;
+            }
+            100% {
+                top: 60%;
+            }
+        }
+
+        /* Animação horizontal do risco vertical */
+        @keyframes moveLeftRight {
+            0% {
+                left: 20%;
+            }
+            50% {
+                left: 50%;
+            }
+            100% {
+                left: 80%;
+            }
+        }
+
+        /* Grid Container */
+        .white-square {
+            width: 402px;
+            height: 448px;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 10000;
+            overflow: hidden;
+            pointer-events: none;
+            display: none;
+        }
+
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(5, 71px);
+            grid-template-rows: repeat(5, 70px);
+            gap: 5px;
+            height: 100%;
+            width: 100%;
+        }
+
+        .grid-item {
+            background-color: rgba(255, 255, 255, 0);
+            border: 15px solid rgba(0, 0, 0, 0);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .grid-item img {
+            max-width: 100%;
+            max-height: 100%;
+        }
+
+        /* Context Options */
+        .context-options {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: rgba(0, 0, 0, 0.8);
+            padding: 15px;
+            border-radius: 10px;
+            font-family: 'M PLUS 1 Code', sans-serif;
+            color: #ffffff;
+            display: none;
+            z-index: 10000;
+            overflow: hidden;
+            filter: contrast(1.2) brightness(0.8);
+        }
+
+        .assertividade {
+            font-size: 18px;
+            margin-bottom: 10px;
+            color: green;
+            text-align: center;
+        }
+
+        /* Video Background */
+        .video-background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: -2;
+        }
+
+        .video-background video {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            min-width: 100%;
+            min-height: 100%;
+            width: auto;
+            height: auto;
+            object-fit: cover;
+        }
+
+        /* Mobile adjustments */
+        @media (max-width: 480px) {
+            .hacker-icon {
+                width: 60px;
+                height: 60px;
+                font-size: 1.5rem;
+            }
+
+            .white-square {
+                width: 300px;
+                height: 336px;
+            }
+
+            .grid-container {
+                grid-template-columns: repeat(5, 53px);
+                grid-template-rows: repeat(5, 53px);
+                gap: 4px;
+            }
+
+            .grid-item {
+                border: 10px solid rgba(0, 0, 0, 0);
+            }
+
+            .hackeando-text {
+                font-size: 22px;
             }
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <!-- Header -->
-        <div class="card header">
-            <h1 class="title">
-                <span>💣</span>
-                <span>MINES</span>
-                <span>-</span>
-                <span>Hacker Da Blaze</span>
-                <span>💎</span>
-            </h1>
-            <p class="subtitle">Encontre os diamantes e ganhe descontos incríveis!</p>
-            <p class="highlight">🎁 ALGUNS JOGADORES ESTÃO GANHANDO O PRODUTO DE GRAÇA! 🎁</p>
-            <p class="player-id" id="playerId">🆔 Seu ID: <span class="loading"></span></p>
-        </div>
+    <!-- Video Background -->
+    <div class="video-background">
+        <video autoplay muted loop playsinline id="background-video">
+            <source src="https://assets.codepen.io/3364143/7btrrd.mp4" type="video/mp4">
+            Seu navegador não suporta vídeos.
+        </video>
+    </div>
 
-        <!-- Notification -->
-        <div class="notification" id="notification">
-            <div style="display: flex; align-items: center; justify-content: space-between;">
-                <div style="display: flex; align-items: center; gap: 0.5rem; flex: 1;">
-                    <span>🔔</span>
-                    <div style="flex: 1;">
-                        <p style="font-weight: bold; font-size: 0.875rem;" id="notifName"></p>
-                        <p style="font-size: 0.75rem;" id="notifDiscount"></p>
-                        <p style="font-size: 0.75rem; opacity: 0.75;" id="notifTime"></p>
-                    </div>
-                </div>
-                <button onclick="hideNotification()" style="background: none; border: none; color: white; cursor: pointer; padding: 0.5rem; font-size: 1.2rem;">✕</button>
-            </div>
-        </div>
+    <!-- Matrix Background Canvas -->
+    <canvas id="matrix"></canvas>
 
-        <!-- Warning if already played -->
-        <div class="card warning-message hidden" id="alreadyPlayedWarning">
-            <div style="display: flex; align-items: center; justify-content: center; gap: 0.5rem; flex-wrap: wrap;">
-                <span>🔒</span>
-                <p style="font-weight: bold; text-align: center;">Você já utilizou sua chance única! Não é possível jogar novamente.</p>
-            </div>
-        </div>
+    <!-- Loading Overlay -->
+    <div id="loading" class="loading">
+        <div class="spinner"></div>
+    </div>
 
-        <!-- Video Section -->
-        <div class="card video-section" id="videoSection">
-            <h2 style="color: white; margin-bottom: 1rem; display: flex; align-items: center; gap: 0.5rem; font-size: 1.25rem;">
-                <span style="color: #eab308;">📹</span>
-                Veja como funciona o sistema
-            </h2>
-            <div class="video-container">
-                <div class="video-placeholder">
-                    <button class="play-button" onclick="startVideo()">▶</button>
-                </div>
-            </div>
-            <div class="button-container">
-                <button class="button button-primary" onclick="startVideo()">▶ Assistir Vídeo</button>
-                <button class="button button-secondary" onclick="skipVideo()">Pular Vídeo</button>
-                <button class="button button-primary pulse" onclick="initializeGame()">🎮 Jogar Agora</button>
-            </div>
-            <p style="color: #86efac; text-align: center; font-size: 0.875rem; font-weight: bold; margin-top: 1rem;">
-                ⚡ Você pode jogar sem assistir o vídeo completo!
-            </p>
-        </div>
+    <!-- Hacking Overlay -->
+    <div id="loading-overlay" class="loading-overlay"></div>
 
-        <!-- Game Layout -->
-        <div class="game-layout hidden" id="gameLayout">
-            <!-- Game Board -->
-            <div class="card game-board">
-                <h2 class="text-center" style="color: white; margin-bottom: 1rem; font-size: 1.125rem;" id="gameTitle">
-                    Você tem 5 cliques! Encontre os diamantes!
-                </h2>
-                <div class="grid" id="gameGrid"></div>
-                <div class="success-message hidden mt-4" id="winMessage">
-                    <p style="color: #86efac; font-weight: bold; font-size: 1.125rem;">
-                        INCRÍVEL! Você ganhou <span id="winPercent">57</span>% de desconto!
-                    </p>
-                    <p style="color: #bbf7d0; font-size: 0.875rem; margin-top: 0.25rem;">
-                        Clique no botão "Resgatar no WhatsApp" para garantir sua promoção
-                    </p>
-                    <p style="color: #fde047; font-size: 0.75rem; margin-top: 0.5rem;" id="winPlayerId">🆔 Seu ID: </p>
-                </div>
-            </div>
+    <!-- Context Options -->
+    <div id="contextOptions" class="context-options"></div>
 
-            <!-- Status Panel -->
-            <div class="card status-panel">
-                <h2 style="color: white; margin-bottom: 1rem; display: flex; align-items: center; gap: 0.5rem; font-size: 1.125rem;">
-                    <span style="color: #eab308;">🎁</span>
-                    Status do Jogo
-                </h2>
-                <div class="space-y-4">
-                    <div class="text-center">
-                        <span class="badge" id="clicksLeft">Cliques Restantes: 5</span>
-                    </div>
-                    <div class="text-center">
-                        <p style="color: #c4b5fd; margin-bottom: 0.5rem; font-size: 0.875rem;">Desconto Acumulado:</p>
-                        <div class="discount-display" id="totalDiscount">0%</div>
-                    </div>
-                    <div class="price-info">
-                        <p style="color: #c4b5fd; font-size: 0.875rem; margin-bottom: 0.5rem;">Produto: Hacker Da Blaze</p>
-                        <p class="original-price">Preço Original: R$ 299,99</p>
-                        <p class="final-price" id="finalPrice">Preço Final: R$ 299,99</p>
-                        <p style="color: #c4b5fd; font-size: 0.875rem;" id="savings">Economia: R$ 0,00</p>
-                    </div>
-                    <div class="winners-list">
-                        <h4 style="color: white; font-weight: bold; font-size: 0.875rem; margin-bottom: 0.5rem;">🔥 Últimos Ganhadores:</h4>
-                        <div id="winnersList" style="max-height: 8rem; overflow-y: auto;"></div>
-                    </div>
-                    <button class="button button-whatsapp hidden pulse" id="whatsappButton" onclick="openWhatsapp()">
-                        📱 Resgatar no WhatsApp
-                    </button>
-                    <div class="success-message hidden" id="redeemedMessage">
-                        <p style="color: #86efac; font-weight: bold; font-size: 0.875rem;">✅ Promoção Resgatada!</p>
-                        <p style="color: #bbf7d0; font-size: 0.75rem;" id="redeemedId">ID: </p>
-                        <p style="color: #bbf7d0; font-size: 0.75rem;">Aguarde o contato via WhatsApp</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Instructions -->
-        <div class="card instructions">
-            <h3 style="color: white; font-weight: bold; margin-bottom: 0.75rem; font-size: 1.125rem;">Como Jogar:</h3>
-            <ul style="color: #c4b5fd;">
-                <li>• Você tem apenas 5 cliques para acumular desconto</li>
-                <li>• Clique nas células para encontrar diamantes</li>
-                <li>• Todos os cliques são diamantes - sem bombas!</li>
-                <li>• Na 4ª jogada, você pode encontrar uma bomba, mas ainda ganha o desconto!</li>
-                <li>• Mesmo explodindo, você garante seus 57% de desconto</li>
-                <li>• Alguns jogadores estão ganhando o produto TOTALMENTE GRÁTIS!</li>
-                <li>• Após os 5 cliques, resgate sua promoção pelo WhatsApp</li>
-                <li>• Cada pessoa pode jogar apenas uma vez</li>
-                <li>• Guarde seu ID para acompanhar o resgate</li>
-            </ul>
+    <!-- Grid Container -->
+    <div class="white-square" id="white-square">
+        <div class="grid-container">
+            <div class="grid-item"></div>
+            <div class="grid-item"></div>
+            <div class="grid-item"></div>
+            <div class="grid-item"></div>
+            <div class="grid-item"></div>
+            <div class="grid-item"></div>
+            <div class="grid-item"></div>
+            <div class="grid-item"></div>
+            <div class="grid-item"></div>
+            <div class="grid-item"></div>
+            <div class="grid-item"></div>
+            <div class="grid-item"></div>
+            <div class="grid-item"></div>
+            <div class="grid-item"></div>
+            <div class="grid-item"></div>
+            <div class="grid-item"></div>
+            <div class="grid-item"></div>
+            <div class="grid-item"></div>
+            <div class="grid-item"></div>
+            <div class="grid-item"></div>
+            <div class="grid-item"></div>
+            <div class="grid-item"></div>
+            <div class="grid-item"></div>
+            <div class="grid-item"></div>
+            <div class="grid-item"></div>
         </div>
     </div>
 
+    <!-- Main Content -->
+    <div class="main-container" id="main-container">
+        <!-- Logo -->
+        <div class="logo-container">
+            <img src="https://via.placeholder.com/120x120/000000/ffffff?text=LOGO" alt="Logo">
+        </div>
+
+        <!-- Title -->
+        <h1 class="main-title">PROJETO MOBILE</h1>
+
+        <!-- Description -->
+        <p class="description">
+            Interface otimizada para dispositivos móveis
+        </p>
+
+        <!-- Action Buttons -->
+        <div class="buttons-container">
+            <button class="btn-custom btn-red" onclick="openSite('https://winrico.net/yhgcds1al')">
+                <img src="https://i.postimg.cc/Xqz8QZPX/winrico-logo.png" alt="WinRico" loading="lazy">
+            </button>
+            <button class="btn-custom btn-yellow" onclick="openSite('https://como.bet/yvrgjmbyb')">
+                <img src="https://i.postimg.cc/VkQJBLhL/como-bet-logo.png" alt="Como.bet" loading="lazy">
+            </button>
+        </div>
+
+        <!-- Social Icons -->
+        <div class="social-icons">
+            <a href="#" class="instagram">
+                <i class="bi bi-instagram"></i>
+            </a>
+            <a href="#" class="telegram">
+                <i class="bi bi-telegram"></i>
+            </a>
+            <a href="#" class="whatsapp">
+                <i class="bi bi-whatsapp"></i>
+            </a>
+        </div>
+
+        <!-- Footer -->
+        <div class="footer-text">
+            <p>Projeto Escolar - Layout Mobile</p>
+        </div>
+    </div>
+
+    <!-- iFrame Container -->
+    <div id="iframe-container">
+        <iframe id="site-iframe" src="/placeholder.svg" title="Site Externo"></iframe>
+    </div>
+
+    <!-- Draggable Hacker Icon -->
+    <div id="hacker-icon" class="hacker-icon" onclick="stopScroll()">
+        <img src="https://i.ibb.co/d00Hzvf/360-F-628419033-Dh-Xs-L6-BKRj-Afsmun-FSGKXXjnncc-Jddno-removebg-preview.png" alt="Hacker">
+    </div>
+
     <script>
-        // Game State
-        let gameState = 'intro';
-        let clicksLeft = 5;
-        let totalDiscount = 0;
-        let hasPlayed = false;
-        let hasRedeemed = false;
-        let clickedCells = [];
-        let playerId = '';
-        let cells = [];
+        // Matrix Rain Effect
+        const canvas = document.getElementById("matrix");
+        const ctx = canvas.getContext("2d");
 
-        // Constants
-        const productPrice = 299.99;
-        const productName = "Hacker Da Blaze";
-        const whatsappNumber = "+55 42 9848-2255";
-        const clickValues = [12, 15, 13, 17, 0];
-
-        const randomNames = [
-            "Carlos M.", "Ana S.", "João P.", "Maria L.", "Pedro R.", "Julia C.",
-            "Lucas O.", "Fernanda A.", "Rafael B.", "Camila T.", "Bruno F.", "Larissa M.",
-            "Diego S.", "Beatriz L.", "Thiago N.", "Gabriela R.", "Mateus V.", "Isabella K.",
-            "Felipe G.", "Sophia D.", "Gustavo H.", "Valentina P."
-        ];
-
-        // Generate unique player ID
-        function generatePlayerId() {
-            const timestamp = Date.now().toString().slice(-6);
-            const random = Math.floor(Math.random() * 9999).toString().padStart(4, '0');
-            return `HB${timestamp}${random}`;
+        function resizeCanvas() {
+            canvas.height = window.innerHeight;
+            canvas.width = window.innerWidth;
         }
 
-        // Initialize
-        function init() {
-            playerId = generatePlayerId();
-            document.getElementById('playerId').innerHTML = `🆔 Seu ID: ${playerId}`;
-            
-            // Start fake notifications
-            setTimeout(generateNotification, 2000);
-            setInterval(() => {
-                generateNotification();
-            }, Math.random() * 7000 + 8000);
+        resizeCanvas();
+        window.addEventListener('resize', resizeCanvas);
 
-            // Add touch feedback
-            addTouchFeedback();
-        }
+        const letters = ["日","ﾊ","ﾐ","ﾋ","ｰ","ｳ","ｼ","ﾅ","ﾓ","ﾆ","ｻ","ﾜ","ﾂ","ｵ","ﾘ","ｱ","ﾎ","ﾃ","ﾏ","ｹ","ﾒ","エ","カ","キ","ム","ユ","ラ","セ","ネ","ス","タ","ヌ","ヘ",":","・",".","=","*","+","-","<",">","¦","｜","ﾘ"];
+        const fontSize = 18;
+        const columns = canvas.width / fontSize;
+        const drops = new Array(Math.floor(columns)).fill(1);
 
-        // Add touch feedback for better mobile experience
-        function addTouchFeedback() {
-            const buttons = document.querySelectorAll('.button, .cell');
-            buttons.forEach(button => {
-                button.addEventListener('touchstart', function() {
-                    this.style.transform = 'scale(0.95)';
-                });
-                button.addEventListener('touchend', function() {
-                    setTimeout(() => {
-                        this.style.transform = '';
-                    }, 150);
-                });
-            });
-        }
+        function draw() {
+            ctx.fillStyle = "rgba(0, 0, 0, 0.1)";
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+            ctx.fillStyle = "#FF0000";
+            ctx.font = `${fontSize}px arial`;
 
-        // Generate fake notifications
-        function generateNotification() {
-            const name = randomNames[Math.floor(Math.random() * randomNames.length)];
-            const discounts = [15, 25, 35, 45, 55, 60, 70, 80, 85, 90, 95, 100];
-            const discount = discounts[Math.floor(Math.random() * discounts.length)];
-            const now = new Date();
-            const timestamp = `${now.getHours().toString().padStart(2, '0')}:${now.getMinutes().toString().padStart(2, '0')}`;
+            for (let i = 0; i < drops.length; i++) {
+                const text = letters[Math.floor(Math.random() * letters.length)];
+                ctx.fillText(text, i * fontSize, drops[i] * fontSize);
 
-            document.getElementById('notifName').textContent = name;
-            document.getElementById('notifDiscount').textContent = `Ganhou ${discount}% de desconto!`;
-            document.getElementById('notifTime').textContent = timestamp;
-            
-            showNotification();
-            
-            // Add to winners list
-            const winnersList = document.getElementById('winnersList');
-            const winnerItem = document.createElement('div');
-            winnerItem.className = 'winner-item';
-            winnerItem.innerHTML = `
-                <span style="color: #86efac; font-weight: bold;">${name}</span>
-                <span style="color: white;"> - ${discount}%</span>
-                <span style="color: #9ca3af; float: right;">${timestamp}</span>
-            `;
-            winnersList.insertBefore(winnerItem, winnersList.firstChild);
-            
-            // Keep only last 5 winners
-            while (winnersList.children.length > 5) {
-                winnersList.removeChild(winnersList.lastChild);
+                if (drops[i] * fontSize > canvas.height && Math.random() > 0.95) {
+                    drops[i] = 0;
+                }
+                drops[i]++;
             }
+
+            window.requestAnimationFrame(draw);
         }
 
-        function showNotification() {
-            const notification = document.getElementById('notification');
-            notification.style.display = 'block';
+        draw();
+
+        // Draggable functionality
+        let isDragging = false;
+        let dragOffset = { x: 0, y: 0 };
+        const hackerIcon = document.getElementById('hacker-icon');
+
+        // Mouse events
+        hackerIcon.addEventListener('mousedown', startDrag);
+        document.addEventListener('mousemove', drag);
+        document.addEventListener('mouseup', stopDrag);
+
+        // Touch events
+        hackerIcon.addEventListener('touchstart', startDragTouch, { passive: false });
+        document.addEventListener('touchmove', dragTouch, { passive: false });
+        document.addEventListener('touchend', stopDrag);
+
+        function startDrag(e) {
+            e.preventDefault();
+            isDragging = true;
+            hackerIcon.classList.add('dragging');
+            
+            const rect = hackerIcon.getBoundingClientRect();
+            dragOffset.x = e.clientX - rect.left;
+            dragOffset.y = e.clientY - rect.top;
+        }
+
+        function startDragTouch(e) {
+            e.preventDefault();
+            isDragging = true;
+            hackerIcon.classList.add('dragging');
+            
+            const rect = hackerIcon.getBoundingClientRect();
+            const touch = e.touches[0];
+            dragOffset.x = touch.clientX - rect.left;
+            dragOffset.y = touch.clientY - rect.top;
+        }
+
+        function drag(e) {
+            if (!isDragging) return;
+            e.preventDefault();
+            
+            const x = e.clientX - dragOffset.x;
+            const y = e.clientY - dragOffset.y;
+            
+            // Keep icon within screen bounds
+            const maxX = window.innerWidth - hackerIcon.offsetWidth;
+            const maxY = window.innerHeight - hackerIcon.offsetHeight;
+            
+            hackerIcon.style.left = Math.max(0, Math.min(x, maxX)) + 'px';
+            hackerIcon.style.top = Math.max(0, Math.min(y, maxY)) + 'px';
+        }
+
+        function dragTouch(e) {
+            if (!isDragging) return;
+            e.preventDefault();
+            
+            const touch = e.touches[0];
+            const x = touch.clientX - dragOffset.x;
+            const y = touch.clientY - dragOffset.y;
+            
+            const maxX = window.innerWidth - hackerIcon.offsetWidth;
+            const maxY = window.innerHeight - hackerIcon.offsetHeight;
+            
+            hackerIcon.style.left = Math.max(0, Math.min(x, maxX)) + 'px';
+            hackerIcon.style.top = Math.max(0, Math.min(y, maxY)) + 'px';
+        }
+
+        function stopDrag() {
+            isDragging = false;
+            hackerIcon.classList.remove('dragging');
+        }
+
+        // Site functions
+        function openSite(url) {
+            const loading = document.getElementById('loading');
+            loading.style.display = 'flex';
+
             setTimeout(() => {
-                hideNotification();
-            }, 4000);
-        }
-
-        function hideNotification() {
-            document.getElementById('notification').style.display = 'none';
-        }
-
-        function startVideo() {
-            console.log('Video started');
-            // Add your video logic here
-        }
-
-        function skipVideo() {
-            console.log('Video skipped');
-        }
-
-        function initializeGame() {
-            if (hasPlayed) return;
-
-            // Hide video section, show game
-            document.getElementById('videoSection').classList.add('hidden');
-            document.getElementById('gameLayout').classList.remove('hidden');
-
-            // Initialize cells
-            cells = [];
-            for (let i = 0; i < 25; i++) {
-                cells.push({
-                    id: i,
-                    isMine: false,
-                    isRevealed: false,
-                    discount: 0
-                });
-            }
-
-            gameState = 'playing';
-            clicksLeft = 5;
-            totalDiscount = 0;
-            hasPlayed = true;
-            clickedCells = [];
-
-            renderGame();
-            
-            // Scroll to game on mobile
-            if (window.innerWidth < 768) {
-                document.getElementById('gameLayout').scrollIntoView({ behavior: 'smooth' });
-            }
-        }
-
-        function renderGame() {
-            // Update UI
-            document.getElementById('clicksLeft').textContent = `Cliques Restantes: ${clicksLeft}`;
-            document.getElementById('totalDiscount').textContent = `${totalDiscount}%`;
-            
-            const finalPrice = productPrice - (productPrice * totalDiscount / 100);
-            const savings = productPrice - finalPrice;
-            
-            document.getElementById('finalPrice').textContent = `Preço Final: R$ ${finalPrice.toFixed(2)}`;
-            document.getElementById('savings').textContent = `Economia: R$ ${savings.toFixed(2)}`;
-
-            // Render grid
-            const grid = document.getElementById('gameGrid');
-            grid.innerHTML = '';
-            
-            cells.forEach((cell, index) => {
-                const cellElement = document.createElement('button');
-                cellElement.className = 'cell';
-                cellElement.onclick = () => handleCellClick(index);
+                loading.style.display = 'none';
+                document.getElementById('main-container').style.display = 'none';
+                document.getElementById('site-iframe').src = url;
+                document.getElementById('iframe-container').style.display = 'block';
+                document.body.style.overflow = 'hidden';
                 
-                if (cell.isRevealed) {
-                    cellElement.disabled = true;
-                    if (cell.isMine) {
-                        cellElement.classList.add('bomb');
-                        cellElement.innerHTML = '💣<br><span style="font-size: 0.6rem;">BOOM!</span>';
-                    } else {
-                        cellElement.classList.add('revealed');
-                        cellElement.innerHTML = `💎<br><span style="font-size: 0.6rem;">${cell.discount}%</span>`;
+                // Show hacker icon
+                showHackerIcon();
+            }, 1500);
+        }
+
+        function closeSite() {
+            document.getElementById('iframe-container').style.display = 'none';
+            document.getElementById('site-iframe').src = '';
+            document.getElementById('main-container').style.display = 'flex';
+            document.body.style.overflow = 'auto';
+            
+            // Hide hacker icon
+            hideHackerIcon();
+            
+            // Hide grid and overlay
+            document.getElementById('white-square').style.display = 'none';
+            document.getElementById('loading-overlay').style.display = 'none';
+        }
+
+        // Hacker icon functions
+        function showHackerIcon() {
+            hackerIcon.style.display = 'flex';
+            hackerIcon.style.left = '20px';
+            hackerIcon.style.top = '60px';
+        }
+
+        function hideHackerIcon() {
+            hackerIcon.style.display = 'none';
+        }
+
+        // Hacking function
+        function stopScroll() {
+            if (isDragging) return; // Don't activate if dragging
+            
+            const loadingOverlay = document.getElementById('loading-overlay');
+            const contextOptions = document.getElementById('contextOptions');
+            const whiteSquare = document.getElementById('white-square');
+
+            // 1. Mostrar o overlay de carregamento
+            if (loadingOverlay) {
+                loadingOverlay.style.display = 'flex';
+                loadingOverlay.innerHTML = '';
+
+                const hackeandoText = document.createElement('div');
+                hackeandoText.textContent = 'HACKEANDO MINES';
+                hackeandoText.className = 'hackeando-text';
+                loadingOverlay.appendChild(hackeandoText);
+            }
+
+            // 2. Após 5 segundos, esconder loading e exibir diamantes
+            setTimeout(() => {
+                // Esconder overlay de carregamento
+                if (loadingOverlay) {
+                    loadingOverlay.style.display = 'none';
+                }
+
+                // Mostrar o grid
+                if (whiteSquare) {
+                    whiteSquare.style.display = 'block';
+                }
+
+                // Lógica principal: inserir elemento de "Assertividade" e diamantes
+                const assertividade = '100%';
+                if (contextOptions) {
+                    // Remove assertividade anterior, se existir
+                    const existing = contextOptions.querySelector('.assertividade');
+                    if (existing) {
+                        contextOptions.removeChild(existing);
                     }
-                } else if (gameState !== 'playing' || clicksLeft === 0 || hasRedeemed) {
-                    cellElement.disabled = true;
+
+                    // Cria e adiciona assertividade
+                    const assertElem = document.createElement('div');
+                    assertElem.textContent = `Assertividade: ${assertividade}`;
+                    assertElem.className = 'assertividade';
+                    contextOptions.appendChild(assertElem);
+                    contextOptions.style.display = 'block';
+
+                    // Limpa o grid e insere diamantes em posições aleatórias
+                    const gridItems = document.querySelectorAll('.grid-item');
+                    gridItems.forEach(item => item.innerHTML = '');
+
+                    const numDiamantes = Math.floor(Math.random() * 5) + 1;
+                    const shuffled = Array.from(gridItems).sort(() => Math.random() - 0.5);
+                    for (let i = 0; i < numDiamantes; i++) {
+                        const cell = shuffled[i];
+                        if (cell) {
+                            const urlDiamante = 'https://brwinner.net/mines/zs.png';
+                            cell.innerHTML = `<img src="${urlDiamante}" alt="Diamante">`;
+                        }
+                    }
                 }
-                
-                grid.appendChild(cellElement);
+
+                // 3. Após 7 segundos, restaurar tudo
+                setTimeout(() => {
+                    // Remove assertividade (se existir)
+                    if (contextOptions) {
+                        contextOptions.style.display = 'none';
+                        const assertElem = contextOptions.querySelector('.assertividade');
+                        if (assertElem) {
+                            contextOptions.removeChild(assertElem);
+                        }
+                    }
+
+                    // Limpa o grid novamente
+                    const allItems = document.querySelectorAll('.grid-item');
+                    allItems.forEach(item => item.innerHTML = '');
+
+                    // Esconde o grid
+                    if (whiteSquare) {
+                        whiteSquare.style.display = 'none';
+                    }
+                }, 7000); // 7 segundos para restaurar
+            }, 5000); // 5 segundos de "carregando"
+        }
+
+        // Adicionar evento de teclado para fechar o site (Escape)
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape' && document.getElementById('iframe-container').style.display === 'block') {
+                closeSite();
+            }
+        });
+
+        // Video background
+        document.addEventListener('DOMContentLoaded', function () {
+            var video = document.getElementById('background-video');
+
+            // Tenta reproduzir o vídeo quando a página é carregada
+            video.play().then(() => {
+                // Sucesso, o vídeo está sendo reproduzido
+            }).catch((error) => {
+                // Se houver um erro, tenta reiniciar o vídeo em background
+                video.muted = true;
+                video.play();
             });
+        });
 
-            // Update game title
-            let title = '';
-            if (gameState === 'playing') {
-                title = `Você tem ${clicksLeft} cliques! Encontre os diamantes!`;
-            } else if (gameState === 'won') {
-                const hasExploded = cells.some(c => c.isRevealed && c.isMine);
-                if (hasExploded) {
-                    title = '💣 BOOM! Mas você ainda ganhou 57% de desconto!';
-                } else {
-                    title = '🎉 Parabéns! Você ganhou 57% de desconto!';
-                }
-            } else if (gameState === 'finished') {
-                title = '🔒 Jogo finalizado - Promoção resgatada';
-            }
-            document.getElementById('gameTitle').textContent = title;
+        // Touch optimization
+        document.addEventListener('touchstart', function() {}, {passive: true});
 
-            // Re-add touch feedback to new cells
-            addTouchFeedback();
-        }
-
-        function handleCellClick(cellId) {
-            if (gameState !== 'playing' || clicksLeft === 0 || hasRedeemed) return;
-            if (cells[cellId].isRevealed || clickedCells.includes(cellId)) return;
-
-            // Add haptic feedback on supported devices
-            if (navigator.vibrate) {
-                navigator.vibrate(50);
-            }
-
-            const clickIndex = 5 - clicksLeft;
-            const isFourthClick = clickIndex === 3;
-            const shouldExplode = isFourthClick && Math.random() < 0.3;
-
-            if (shouldExplode) {
-                // Explode on 4th click but still win 57%
-                cells[cellId].isRevealed = true;
-                cells[cellId].isMine = true;
-                cells[cellId].discount = 0;
-                clickedCells.push(cellId);
-                totalDiscount = 57;
-                clicksLeft = 0;
-                
-                // Stronger vibration for explosion
-                if (navigator.vibrate) {
-                    navigator.vibrate([100, 50, 100]);
-                }
-                
-                setTimeout(() => {
-                    gameState = 'won';
-                    showWinMessage();
-                    renderGame();
-                }, 1500);
-            } else {
-                // Normal diamond click
-                const discountValue = clickIndex < 4 ? clickValues[clickIndex] : 0;
-                cells[cellId].isRevealed = true;
-                cells[cellId].discount = discountValue;
-                clickedCells.push(cellId);
-                totalDiscount += discountValue;
-                clicksLeft--;
-
-                if (clicksLeft === 0) {
-                    setTimeout(() => {
-                        gameState = 'won';
-                        showWinMessage();
-                        renderGame();
-                    }, 1000);
-                }
-            }
-
-            renderGame();
-        }
-
-        function showWinMessage() {
-            document.getElementById('whatsappButton').classList.remove('hidden');
-            document.getElementById('winMessage').classList.remove('hidden');
-            document.getElementById('winPercent').textContent = totalDiscount;
-            document.getElementById('winPlayerId').textContent = `🆔 Seu ID: ${playerId}`;
-            
-            // Scroll to WhatsApp button on mobile
-            if (window.innerWidth < 768) {
-                setTimeout(() => {
-                    document.getElementById('whatsappButton').scrollIntoView({ behavior: 'smooth', block: 'center' });
-                }, 500);
-            }
-        }
-
-        function openWhatsapp() {
-            const discountText = "57";
-            const productText = "Hacker Da Blaze";
-            const currentDate = new Date();
-            const dateStr = currentDate.toLocaleDateString("pt-BR");
-            const timeStr = currentDate.toLocaleTimeString("pt-BR", { hour: "2-digit", minute: "2-digit" });
-
-            const message = `🎮 *RESGATE DE PROMOÇÃO - MINES*
-
-👤 *ID do Jogador:* ${playerId}
-💎 *Desconto Conquistado:* ${discountText}%
-📱 *Produto:* ${productText}
-📅 *Data/Hora:* ${dateStr} às ${timeStr}
-
-✅ Quero resgatar minha promoção agora!
-
-_Este é um código único e intransferível._`;
-
-            const encodedMessage = encodeURIComponent(message);
-            const whatsappUrl = `https://wa.me/5542984822255?text=${encodedMessage}`;
-
-            window.open(whatsappUrl, "_blank", "noopener,noreferrer");
-
-            // Mark as redeemed
-            hasRedeemed = true;
-            gameState = 'finished';
-            
-            document.getElementById('whatsappButton').classList.add('hidden');
-            document.getElementById('winMessage').classList.add('hidden');
-            document.getElementById('redeemedMessage').classList.remove('hidden');
-            document.getElementById('redeemedId').textContent = `ID: ${playerId}`;
-            document.getElementById('alreadyPlayedWarning').classList.remove('hidden');
-
-            renderGame();
-        }
-
-        // Initialize when page loads
-        window.onload = init;
-
-        // Prevent zoom on double tap (iOS)
         let lastTouchEnd = 0;
         document.addEventListener('touchend', function (event) {
             const now = (new Date()).getTime();
@@ -967,13 +894,6 @@ _Este é um código único e intransferível._`;
             }
             lastTouchEnd = now;
         }, false);
-
-        // Handle orientation change
-        window.addEventListener('orientationchange', function() {
-            setTimeout(() => {
-                renderGame();
-            }, 500);
-        });
     </script>
 </body>
 </html>
