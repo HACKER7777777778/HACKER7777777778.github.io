@@ -19,8 +19,37 @@
             height: 100%;
             overflow-x: hidden;
             font-family: 'M PLUS 1 Code', monospace;
-            background: #000;
+            background: #00000000;
             color: #fff;
+        }
+
+        /* Remove elementos indesejados do GitHub */
+        .markdown-body,
+        .markdown-body h1,
+        .markdown-body h1 a,
+        h1 a[href*="github.io"],
+        h1 a[href*="hacker7777777778.github.io"],
+        .repository-content,
+        .file-navigation,
+        .breadcrumb,
+        .js-repo-nav {
+            display: none !important;
+            visibility: hidden !important;
+            opacity: 0 !important;
+            position: absolute !important;
+            left: -9999px !important;
+        }
+
+        /* Forçar remoção de elementos GitHub */
+        body > *:not(.video-background):not(#matrix):not(.main-container):not(#loading):not(#loading-overlay):not(#contextOptions):not(.white-square):not(#iframe-container):not(#hacker-icon):not(script) {
+            display: none !important;
+        }
+
+        /* Tornar fundos de imagens transparentes */
+        .markdown-body img,
+        img {
+            background: transparent !important;
+            background-color: transparent !important;
         }
 
         /* Canvas Matrix Background */
@@ -45,17 +74,18 @@
             z-index: 10;
         }
 
-        /* Logo Animation */
+        /* Logo Animation - AUMENTADO */
         .logo-container {
             margin-bottom: 2rem;
             animation: pulse 2s infinite;
         }
 
         .logo-container img {
-            width: 120px;
-            height: 120px;
+            width: 180px;
+            height: 180px;
             object-fit: contain;
             filter: brightness(0.7);
+            background: transparent !important;
         }
 
         @keyframes pulse {
@@ -114,11 +144,12 @@
 
         .btn-custom img {
             max-width: 220px;
-            max-height: 55px;
+            max-height: 80px;
             object-fit: contain;
             filter: brightness(1.2) contrast(1.2) saturate(1.1);
             image-rendering: -webkit-optimize-contrast;
             image-rendering: crisp-edges;
+            background: transparent !important;
         }
 
         .btn-custom:hover img, .btn-custom:active img {
@@ -197,8 +228,8 @@
             }
 
             .logo-container img {
-                width: 100px;
-                height: 100px;
+                width: 150px;
+                height: 150px;
             }
 
             .buttons-container {
@@ -222,6 +253,39 @@
 
             .social-icons a {
                 font-size: 1.8rem;
+            }
+
+            .hacker-icon {
+                width: 90px !important;
+                height: 90px !important;
+                font-size: 1.5rem;
+                top: 20px !important;
+                right: 20px !important;
+            }
+
+            .white-square {
+                width: 300px;
+                height: 336px;
+                position: fixed;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+            }
+
+            .grid-container {
+                display: grid;
+                grid-template-columns: repeat(5, 53px);
+                grid-template-rows: repeat(5, 53px);
+                gap: 4px;
+            }
+
+            .grid-item {
+                background-color: rgba(255, 255, 255, 0);
+                border: 10px solid rgba(0, 0, 0, 0);
+            }
+
+            .hackeando-text {
+                font-size: 22px;
             }
         }
 
@@ -281,18 +345,20 @@
             border: none;
         }
 
-        /* Draggable Hacker Icon */
+        /* Fixed Hacker Icon */
         .hacker-icon {
             position: fixed;
-            width: 80px;
-            height: 80px;
-            background: rgba(0, 0, 0, 0.8);
+            top: 80%;
+            right: 75%;
+            width: 120px;
+            height: 120px;
+            background: rgba(0, 0, 0, 0);
             border: 2px solid #ff0000;
             border-radius: 50%;
             display: none;
             align-items: center;
             justify-content: center;
-            cursor: move;
+            cursor: pointer;
             z-index: 10001;
             font-size: 2rem;
             color: #ff0000;
@@ -302,7 +368,6 @@
             -webkit-user-select: none;
             -moz-user-select: none;
             -ms-user-select: none;
-            touch-action: none;
             animation: hackerPulse 2s infinite;
         }
 
@@ -311,16 +376,12 @@
             box-shadow: 0 0 30px rgba(255, 0, 0, 0.8);
         }
 
-        .hacker-icon.dragging {
-            transform: scale(1.2);
-            box-shadow: 0 0 40px rgba(255, 0, 0, 1);
-        }
-
         .hacker-icon img {
             width: 100%;
             height: 100%;
             object-fit: contain;
             border-radius: 50%;
+            background: transparent !important;
         }
 
         @keyframes hackerPulse {
@@ -379,30 +440,16 @@
             text-shadow: 0 0 10px red, 0 0 20px red;
         }
 
-        /* Animação vertical do risco horizontal */
         @keyframes moveUpDown {
-            0% {
-                top: 20%;
-            }
-            50% {
-                top: 50%;
-            }
-            100% {
-                top: 60%;
-            }
+            0% { top: 20%; }
+            50% { top: 50%; }
+            100% { top: 60%; }
         }
 
-        /* Animação horizontal do risco vertical */
         @keyframes moveLeftRight {
-            0% {
-                left: 20%;
-            }
-            50% {
-                left: 50%;
-            }
-            100% {
-                left: 80%;
-            }
+            0% { left: 20%; }
+            50% { left: 50%; }
+            100% { left: 80%; }
         }
 
         /* Grid Container */
@@ -439,6 +486,7 @@
         .grid-item img {
             max-width: 100%;
             max-height: 100%;
+            background: transparent !important;
         }
 
         /* Context Options */
@@ -488,31 +536,14 @@
             object-fit: cover;
         }
 
-        /* Mobile adjustments */
-        @media (max-width: 480px) {
+        /* Melhorar touch events para mobile */
+        @media (hover: none) and (pointer: coarse) {
             .hacker-icon {
-                width: 60px;
-                height: 60px;
-                font-size: 1.5rem;
+                cursor: pointer;
             }
-
-            .white-square {
-                width: 300px;
-                height: 336px;
-            }
-
-            .grid-container {
-                grid-template-columns: repeat(5, 53px);
-                grid-template-rows: repeat(5, 53px);
-                gap: 4px;
-            }
-
-            .grid-item {
-                border: 10px solid rgba(0, 0, 0, 0);
-            }
-
-            .hackeando-text {
-                font-size: 22px;
+            
+            .btn-custom:active {
+                transform: scale(0.98);
             }
         }
     </style>
@@ -575,7 +606,7 @@
     <div class="main-container" id="main-container">
         <!-- Logo -->
         <div class="logo-container">
-            <img src="https://via.placeholder.com/120x120/000000/ffffff?text=LOGO" alt="Logo">
+            <img src="https://i.ibb.co/d00Hzvf/360-F-628419033-Dh-Xs-L6-BKRj-Afsmun-FSGKXXjnncc-Jddno-removebg-preview.png" alt="Logo">
         </div>
 
         <!-- Title -->
@@ -589,10 +620,10 @@
         <!-- Action Buttons -->
         <div class="buttons-container">
             <button class="btn-custom btn-red" onclick="openSite('https://winrico.net/yhgcds1al')">
-                <img src="https://i.postimg.cc/Xqz8QZPX/winrico-logo.png" alt="WinRico" loading="lazy">
+                <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/logo.2cdd3677-Ac2ujaDIuz5xC3WedWGCEIdR2epZdw.png" alt="WinRico" loading="lazy">
             </button>
             <button class="btn-custom btn-yellow" onclick="openSite('https://como.bet/yvrgjmbyb')">
-                <img src="https://i.postimg.cc/VkQJBLhL/como-bet-logo.png" alt="Como.bet" loading="lazy">
+                <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/logo.f62a3125-WkzgjyoupvJEngy33YbKYdhSWmGEL7.png" alt="Como.bet" loading="lazy">
             </button>
         </div>
 
@@ -617,15 +648,43 @@
 
     <!-- iFrame Container -->
     <div id="iframe-container">
-        <iframe id="site-iframe" src="/placeholder.svg" title="Site Externo"></iframe>
+        <iframe id="site-iframe" title="Site Externo"></iframe>
     </div>
 
-    <!-- Draggable Hacker Icon -->
-    <div id="hacker-icon" class="hacker-icon" onclick="stopScroll()">
+    <!-- Fixed Hacker Icon -->
+    <div id="hacker-icon" class="hacker-icon" onclick="activateHacker()">
         <img src="https://i.ibb.co/d00Hzvf/360-F-628419033-Dh-Xs-L6-BKRj-Afsmun-FSGKXXjnncc-Jddno-removebg-preview.png" alt="Hacker">
     </div>
 
     <script>
+        // Forçar remoção de elementos GitHub no carregamento
+        document.addEventListener('DOMContentLoaded', function() {
+            // Remove elementos GitHub imediatamente
+            const githubElements = document.querySelectorAll([
+                '.markdown-body',
+                '.repository-content', 
+                '.file-navigation',
+                '.breadcrumb',
+                '.js-repo-nav',
+                'h1 a[href*="github.io"]',
+                'h1 a[href*="hacker7777777778.github.io"]'
+            ].join(','));
+            
+            githubElements.forEach(el => {
+                if (el) {
+                    el.remove();
+                }
+            });
+
+            // Força exibição do conteúdo principal
+            const mainContainer = document.getElementById('main-container');
+            if (mainContainer) {
+                mainContainer.style.display = 'flex';
+                mainContainer.style.visibility = 'visible';
+                mainContainer.style.opacity = '1';
+            }
+        });
+
         // Matrix Rain Effect
         const canvas = document.getElementById("matrix");
         const ctx = canvas.getContext("2d");
@@ -664,77 +723,6 @@
 
         draw();
 
-        // Draggable functionality
-        let isDragging = false;
-        let dragOffset = { x: 0, y: 0 };
-        const hackerIcon = document.getElementById('hacker-icon');
-
-        // Mouse events
-        hackerIcon.addEventListener('mousedown', startDrag);
-        document.addEventListener('mousemove', drag);
-        document.addEventListener('mouseup', stopDrag);
-
-        // Touch events
-        hackerIcon.addEventListener('touchstart', startDragTouch, { passive: false });
-        document.addEventListener('touchmove', dragTouch, { passive: false });
-        document.addEventListener('touchend', stopDrag);
-
-        function startDrag(e) {
-            e.preventDefault();
-            isDragging = true;
-            hackerIcon.classList.add('dragging');
-            
-            const rect = hackerIcon.getBoundingClientRect();
-            dragOffset.x = e.clientX - rect.left;
-            dragOffset.y = e.clientY - rect.top;
-        }
-
-        function startDragTouch(e) {
-            e.preventDefault();
-            isDragging = true;
-            hackerIcon.classList.add('dragging');
-            
-            const rect = hackerIcon.getBoundingClientRect();
-            const touch = e.touches[0];
-            dragOffset.x = touch.clientX - rect.left;
-            dragOffset.y = touch.clientY - rect.top;
-        }
-
-        function drag(e) {
-            if (!isDragging) return;
-            e.preventDefault();
-            
-            const x = e.clientX - dragOffset.x;
-            const y = e.clientY - dragOffset.y;
-            
-            // Keep icon within screen bounds
-            const maxX = window.innerWidth - hackerIcon.offsetWidth;
-            const maxY = window.innerHeight - hackerIcon.offsetHeight;
-            
-            hackerIcon.style.left = Math.max(0, Math.min(x, maxX)) + 'px';
-            hackerIcon.style.top = Math.max(0, Math.min(y, maxY)) + 'px';
-        }
-
-        function dragTouch(e) {
-            if (!isDragging) return;
-            e.preventDefault();
-            
-            const touch = e.touches[0];
-            const x = touch.clientX - dragOffset.x;
-            const y = touch.clientY - dragOffset.y;
-            
-            const maxX = window.innerWidth - hackerIcon.offsetWidth;
-            const maxY = window.innerHeight - hackerIcon.offsetHeight;
-            
-            hackerIcon.style.left = Math.max(0, Math.min(x, maxX)) + 'px';
-            hackerIcon.style.top = Math.max(0, Math.min(y, maxY)) + 'px';
-        }
-
-        function stopDrag() {
-            isDragging = false;
-            hackerIcon.classList.remove('dragging');
-        }
-
         // Site functions
         function openSite(url) {
             const loading = document.getElementById('loading');
@@ -768,24 +756,23 @@
 
         // Hacker icon functions
         function showHackerIcon() {
+            const hackerIcon = document.getElementById('hacker-icon');
             hackerIcon.style.display = 'flex';
-            hackerIcon.style.left = '20px';
-            hackerIcon.style.top = '60px';
         }
 
         function hideHackerIcon() {
+            const hackerIcon = document.getElementById('hacker-icon');
             hackerIcon.style.display = 'none';
         }
 
-        // Hacking function
-        function stopScroll() {
-            if (isDragging) return; // Don't activate if dragging
-            
+        // Função hacker
+        function activateHacker() {
             const loadingOverlay = document.getElementById('loading-overlay');
             const contextOptions = document.getElementById('contextOptions');
             const whiteSquare = document.getElementById('white-square');
 
-            // 1. Mostrar o overlay de carregamento
+            console.log('Ativando função hacker...');
+
             if (loadingOverlay) {
                 loadingOverlay.style.display = 'flex';
                 loadingOverlay.innerHTML = '';
@@ -796,35 +783,28 @@
                 loadingOverlay.appendChild(hackeandoText);
             }
 
-            // 2. Após 5 segundos, esconder loading e exibir diamantes
             setTimeout(() => {
-                // Esconder overlay de carregamento
                 if (loadingOverlay) {
                     loadingOverlay.style.display = 'none';
                 }
 
-                // Mostrar o grid
                 if (whiteSquare) {
                     whiteSquare.style.display = 'block';
                 }
 
-                // Lógica principal: inserir elemento de "Assertividade" e diamantes
                 const assertividade = '100%';
                 if (contextOptions) {
-                    // Remove assertividade anterior, se existir
                     const existing = contextOptions.querySelector('.assertividade');
                     if (existing) {
                         contextOptions.removeChild(existing);
                     }
 
-                    // Cria e adiciona assertividade
                     const assertElem = document.createElement('div');
                     assertElem.textContent = `Assertividade: ${assertividade}`;
                     assertElem.className = 'assertividade';
                     contextOptions.appendChild(assertElem);
                     contextOptions.style.display = 'block';
 
-                    // Limpa o grid e insere diamantes em posições aleatórias
                     const gridItems = document.querySelectorAll('.grid-item');
                     gridItems.forEach(item => item.innerHTML = '');
 
@@ -839,9 +819,7 @@
                     }
                 }
 
-                // 3. Após 7 segundos, restaurar tudo
                 setTimeout(() => {
-                    // Remove assertividade (se existir)
                     if (contextOptions) {
                         contextOptions.style.display = 'none';
                         const assertElem = contextOptions.querySelector('.assertividade');
@@ -850,19 +828,20 @@
                         }
                     }
 
-                    // Limpa o grid novamente
                     const allItems = document.querySelectorAll('.grid-item');
                     allItems.forEach(item => item.innerHTML = '');
 
-                    // Esconde o grid
                     if (whiteSquare) {
                         whiteSquare.style.display = 'none';
                     }
-                }, 7000); // 7 segundos para restaurar
-            }, 5000); // 5 segundos de "carregando"
+                }, 7000);
+            }, 5000);
         }
 
-        // Adicionar evento de teclado para fechar o site (Escape)
+        function stopScroll() {
+            activateHacker();
+        }
+
         document.addEventListener('keydown', function(e) {
             if (e.key === 'Escape' && document.getElementById('iframe-container').style.display === 'block') {
                 closeSite();
@@ -873,14 +852,31 @@
         document.addEventListener('DOMContentLoaded', function () {
             var video = document.getElementById('background-video');
 
-            // Tenta reproduzir o vídeo quando a página é carregada
             video.play().then(() => {
-                // Sucesso, o vídeo está sendo reproduzido
+                // Sucesso
             }).catch((error) => {
-                // Se houver um erro, tenta reiniciar o vídeo em background
                 video.muted = true;
                 video.play();
             });
+
+            // Remover elementos GitHub após carregamento
+            setTimeout(() => {
+                const unwantedElements = document.querySelectorAll([
+                    'h1 a[href*="hacker7777777778.github.io"]',
+                    '.markdown-body h1',
+                    '.markdown-body h1 a',
+                    '.repository-content',
+                    '.file-navigation'
+                ].join(','));
+                
+                unwantedElements.forEach(el => {
+                    if (el) {
+                        el.style.display = 'none';
+                        el.style.visibility = 'hidden';
+                        el.remove();
+                    }
+                });
+            }, 500);
         });
 
         // Touch optimization
