@@ -400,7 +400,16 @@
             z-index: 10001;
         }
         
-       
+       h1 {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
         @keyframes spin {
             0% { transform: rotate(0deg); }
             100% { transform: rotate(360deg); }
@@ -704,6 +713,6 @@ function activateHacker() {
                 });
             }
         });
-    </script>More actions
+    </script>
 </body>
 </html>
