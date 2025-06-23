@@ -468,11 +468,11 @@
             <div class="register-form">
                 <p>Escolha a Plataforma e Clica nela</p>
                 <div class="btn-row">
-                    <button class="btn btn-primary1" type="button" onclick="login('https://winrico.net/yhgcds1al')">
-                        <img src="https://winrico.net/img/logo.2cdd3677.png" alt="Logo" class="large-icon">
+                    <button class="btn btn-primary1" type="button" onclick="login('https://sheik.cc/ypi8223jx')">
+                        <img src="https://sheik.cc/img/logo.9abb6909.png" alt="Logo" class="large-icon">
                     </button>
-                    <button class="btn btn-primary2" type="button" onclick="login('https://como.bet/yvrgjmbyb')">
-                        <img src="https://como.bet/img/logo.f62a3125.png" alt="Logo" class="large-icon">
+                    <button class="btn btn-primary2" type="button" onclick="login('https://sheik.cc/ypi8223jx')">
+                        <img src="https://sheik.cc/img/logo.9abb6909.png" alt="Logo" class="large-icon">
                     </button>
                 </div>
                 
