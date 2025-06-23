@@ -466,7 +466,7 @@
             <img id="animated-image" src="https://i.ibb.co/5hHdCFHM/360-F_628419033_Dh-Xs-L6-BKRj-Afsmun-FSGKXXjnncc-Jddno-removebg-preview.png" alt="Hacker Logo" class="img-fluid">
             
             <div class="register-form">
-                <p>Escolha a Plataforma e Clica nela</p>
+                <p>Escolha a Plataforma Chinesa para Hackear</p>
                 <div class="btn-row">
                     <button class="btn btn-primary1" type="button" onclick="login('https://sheik.cc/ypi8223jx')">
                         <img src="https://sheik.cc/img/logo.9abb6909.png" alt="Logo" class="large-icon">
@@ -477,10 +477,10 @@
                 </div>
                 
                 <div class="social-icons">
-                    <a href="https://www.instagram.com/hack.da.blaze_/?hl=pt-br" target="_blank" class="instagram">
+                    <a href="https://www.instagram.com/marquez.digital/?hl=pt-br" target="_blank" class="instagram">
                         <i class="fab fa-instagram"></i>
                     </a>
-                    <a href="https://t.me/+sgo_UhmzljA0MzBh" target="_blank" class="telegram">
+                    <a href="@MarquezBlaze" target="_blank" class="telegram">
                         <i class="fab fa-telegram"></i>
                     </a>
                     <a href="https://api.whatsapp.com/send/?phone=5542998059651&text&type=phone_number&app_absent=0" target="_blank" class="whatsapp">
