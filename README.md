@@ -103,10 +103,10 @@
     box-shadow: 0 0 10px rgb(203 160 160 / 50%), 0 0 20px rgb(189 154 154 / 30%);}
         
         .btn-primary2 {
-            background-color: #000;
-            border: 2px solid #ffc400;
-            color: #fff;
-            box-shadow: 0 0 10px rgba(255, 166, 0, 0.5), 0 0 20px rgba(255, 196, 0, 0.3);
+             background-color: #000;
+    border: 2px solid #8e8484;
+    color: #fff;
+    box-shadow: 0 0 10px rgb(203 160 160 / 50%), 0 0 20px rgb(189 154 154 / 30%);
         }
         
         .btn::before {
@@ -124,7 +124,7 @@
     background: rgb(255 255 255 / 54%);
 }
         .btn-primary2::before {
-            background: rgba(255, 238, 0, 0.54);
+            background: rgb(255 255 255 / 54%);
         }
 
         .btn:hover::before {
